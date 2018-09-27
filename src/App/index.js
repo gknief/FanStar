@@ -24,17 +24,18 @@ class App extends Component {
 
   render() {
     return (
-      <div>
-        <Signup />
-        <Login 
-        onLogin={this.onLogIn}
-        />
-
-
-
-
-        <Home />
-      </div>
+      <Router>
+        <div className="App">
+          {/* <Link to='/'>Home</Link>
+          &nbsp;
+          <Link to="/signup">Sign Up</Link>
+          &nbsp;
+        <Link to="/login">Log In</Link> */}
+          <Route exact path="/signup"  component={Signup} />
+          <Route exact path="/login"  component={Login} />
+          <Route exact path="/"  component={Home} />
+        </div>
+      </Router>
     );
   }
 }

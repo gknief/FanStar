@@ -8,7 +8,9 @@ export default class Home extends Component {
             <Router>
                 <div className="home-container">
                     <div className="logo">
-                        <Link to='/'><h1>Fan Star</h1></Link>
+                        <Link to='/'>
+                        <img class="logo" src="../images/fan_star_logo1.png" />
+                        <h1 class="fanstar"><span class="f-in-fanstar">F</span>an <span class="f-in-fanstar">S</span>tar</h1></Link>
                     </div>
                     <nav className="home-nav">
                         <Link to='/signup'>Sign Up</Link>

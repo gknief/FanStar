@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import "./style.css";
+import Game from "../Game";
 
 class Profile extends Component {
     constructor(props) {
@@ -15,15 +15,17 @@ class Profile extends Component {
     }
 
     render() {
-        return <div className="Profile">
+        return (
+        <div className="Profile">
         <div>{this.state.name}</div>
         <div>Fan rank: {this.state.rank}</div>
         <div>Favorite team: {this.state.favoriteTeam}</div>
         <div>Number of games attended: {this.state.games}</div>
         <div>Games I've attended:
-        <Events />
+        <Games />
         </div>
-        </div>;
+        </div>
+        );
     }
 }
 

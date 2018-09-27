@@ -1,15 +1,37 @@
 const Sequelize = require('sequelize');
 
 const sequelize = new Sequelize({
-  database: 'some_app_name',
+  database: 'fanstar_db',
   dialect: 'postgres'
 });
 
 
-// Create models here
+const User = sequelize.define('user', {
+  email: Sequelize.TEXT,
+  passwordDigest: { type: Sequelize.STRING, unique: true }
+});
 
+const Game = sequelize.define('event', {
+  date: Sequelize.DATEONLY,
+  location: Sequelize.TEXT
+});
+
+const Team = sequelize.define('team', {
+  name: Sequelize.TEXT
+});
+
+const UserGame = sequelize.define('userGame');
+
+const GameTeam = sequelize.define('gameTeam');
+
+User.belongsToMany(Game, { through: UserEvent });
+Team.belongsToMany(Game, { through: GameTeam });
 
 module.exports = {
-  // Export models
+  User,
+  Game,
+  Team,
+  UserGame,
+  GameTeam,
   sequelize: sequelize
 };

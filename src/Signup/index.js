@@ -32,7 +32,7 @@ class Signup extends Component {
             });
             return;
         }
-        this.props.onLogin();
+        // this.props.onLogin();
         localStorage.setItem('user_jwt', JSON.stringify(responseBody.token));
     }
 

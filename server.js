@@ -51,7 +51,7 @@ app.post('/api/register', async (request, response) => {
   });
 });
 
-app.post('/api.login', async (request, response) => {
+app.post('/api/login', async (request, response) => {
   const { email, password } = request.body;
   if (!email || !password) {
     response.status(400).json({
@@ -72,7 +72,7 @@ app.post('/api.login', async (request, response) => {
   }
   const isPasswordCorrect = await bcrypt.compare(password, existingUser.passwordDigest);
   if (isPasswordCorrect) {
-    const token = jwt.sign({ userId: existinguser.id }, jwtSecret);
+    const token = jwt.sign({ userId: existingUser.id }, jwtSecret);
     response.json({
       token: token
     });

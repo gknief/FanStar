@@ -12,7 +12,7 @@ class App extends Component {
     super(props);
     const token = localStorage.getItem('user_jwt');
     this.state = {
-      userLoggedIn: token || false
+      userLoggedIn: token || false,
     }
   }
 

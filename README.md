@@ -1,29 +1,6 @@
-# Full stack app boilerplate
+# FanStar
 
-This is boilerplate for a full-stack app.
+Users will be able to input and track all sporting events that they attend and also save pictures to the event. With the information the users are providing, the app will rank users by specific team to see who has attended the most games and earned the title of Ultimate FanStar for that given team.
 
-## Install JS dependencies
-
-```
-npm install
-```
-
-## Modify the database name
-
-The database name is defined in `createDb.sql` and `models.js`. You'll need to edit them by hand for now.
-
-## Create the database
-
-```
-npm run db
-```
-
-This will drop the database, recreate it, create tables defined in `models.js`, and seed the database with instance data from `seed.js`
-
-## Run the development server
-
-This will start both the Express API server and the React application.
-
-```
-npm run dev
-```
+Proposal, Wireframe, and ERD:
+https://docs.google.com/document/d/18kLeBLVAnr806ycwS9cqiNoUlhhbxvZn0tGxKKdyxOU/edit?usp=sharing

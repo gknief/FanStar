@@ -19,7 +19,7 @@ class Login extends Component {
     login = async () => {
         const requestBody = JSON.stringify({
             email: this.state.email,
-            password: this.state.password
+            password: this.state.password,
         });
 
         const response = await fetch('/api/login', {
@@ -36,14 +36,18 @@ class Login extends Component {
             });
             return;
         }
-        this.props.onLogIn();
-        localStorage.setItem('user_jwt', JSON.stringify(responseBody.token));
+        this.props.onLogin();
+        localStorage.setItem('user_jwt', responseBody.token);
+    }
+
+    onSubmit = e => {
+        e.preventDefault();
     }
 
     render() {
         return (
             <div className="Login">
-                <form onSubmit={this.login}>
+                <form onSubmit={this.onSubmit}>
                     <input type="text" value={this.state.email} onChange={this.onInputChnge} name="email" />
                     <input type="text" value={this.state.password} onChange={this.onInputChnge} name="password" />
                     <button type="button" onClick={this.login}>Log In</button>

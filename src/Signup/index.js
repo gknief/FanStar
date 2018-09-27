@@ -4,6 +4,8 @@ class Signup extends Component {
     constructor(props) {
         super(props);
         this.state = {
+            firstName: '',
+            lastName: '',
             email: '',
             password: '',
             favoriteTeam: '',
@@ -13,6 +15,8 @@ class Signup extends Component {
 
     register = async () => {
         const requestBody = JSON.stringify({
+            firstName: this.state.firstName,
+            lastName: this.state.lastName,
             email: this.state.email,
             password: this.state.password,
             favoriteTeam: this.state.favoriteTeam
@@ -46,9 +50,11 @@ class Signup extends Component {
         return (
             <div className="Signup">
                 <form onSubmit={this.register}>
+                    <input type="text" value={this.state.firstName} placeholder="First Name" onChange={this.onInputChnge} name="firstName" />
+                    <input type="text" value={this.state.lastName} placeholder="Last Name" onChange={this.onInputChnge} name="lastName" />
+                    <input type="text" value={this.state.favoriteTeam} placeholder="Favorite Team" onChange={this.onInputChnge} name="favoriteTeam" />
                     <input type="text" value={this.state.email} placeholder="Email" onChange={this.onInputChnge} name="email" />
                     <input type="text" value={this.state.password} placeholder="Password" onChange={this.onInputChnge} name="password" />
-                    <input type="text" value={this.state.favoriteTeam} placeholder="Favorite Team" onChange={this.onInputChnge} name="favoriteTeam" />
                     <button type="button" onClick={this.register}>Sign Up</button>
                 </form>
             </div>

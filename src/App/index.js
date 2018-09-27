@@ -1,7 +1,8 @@
 import React, { Component } from "react";
-// import { BrowserRouter as Router, Link, Route } from "react-router-dom";
+import { BrowserRouter as Router, Link, Route } from "react-router-dom";
 import "./style.css";
 import Home from '../Home';
+import Profile from "./Profile";
 
 
 class App extends Component {

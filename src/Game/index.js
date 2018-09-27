@@ -15,7 +15,7 @@ class Game extends Component {
 
     gameClick = () => {
         this.setState({
-            gameAttended = true
+            gameAttended: true
         })
         return;
     }

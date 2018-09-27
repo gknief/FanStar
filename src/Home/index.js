@@ -7,10 +7,14 @@ export default class Home extends Component {
         return (
             <Router>
                 <div className="home-container">
+                {/* <div className="video-container">
+                <video src="..images/sportsvid.mp4" autoplay="" loop=""></video>
+                </div>
+                <div className="overlay"></div> */}
                     <div className="logo">
                         <Link to='/'>
-                        <img class="logo" src="../images/fan_star_logo1.png" />
-                        <h1 class="fanstar"><span class="f-in-fanstar">F</span>an <span class="f-in-fanstar">S</span>tar</h1></Link>
+                        <img className="logo" src="../images/fan_star_logo1.png" />
+                        <h1 className="fanstar"><span className="f-in-fanstar">F</span>an <span className="f-in-fanstar">S</span>tar</h1></Link>
                     </div>
                     <nav className="home-nav">
                         <Link to='/signup'>Sign Up</Link>

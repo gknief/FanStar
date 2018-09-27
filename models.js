@@ -5,8 +5,10 @@ const sequelize = new Sequelize({
   dialect: 'postgres'
 });
 
-
 const User = sequelize.define('user', {
+  firstName: Sequelize.TEXT,
+  lastName: Sequelize.TEXT,
+  favoriteTeam: Sequelize.TEXT,
   email: Sequelize.TEXT,
   passwordDigest: { type: Sequelize.STRING, unique: true }
 });

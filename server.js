@@ -11,6 +11,11 @@ const app = express();
 
 app.use(bodyParser.json());
 
+app.get('/api/users', async (request, response) => {
+  const users = await User.findAll({});
+  response.json(users);
+})
+
 app.post('/api/register', async (request, response) => {
   const { email, password } = request.body;
   if (!email || !password) {

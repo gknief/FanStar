@@ -16,12 +16,13 @@ class Login extends Component {
         })
     }
 
-    login = () => {
+    login = async () => {
         const requestBody = JSON.stringify({
             email: this.state.email,
             password: this.state.password
-        })
-        const response = await fetch('api/login', {
+        });
+
+        const response = await fetch('/api/login', {
             method: 'POST',
             body: requestBody,
             headers: {

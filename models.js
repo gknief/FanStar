@@ -24,7 +24,7 @@ const UserGame = sequelize.define('userGame');
 
 const GameTeam = sequelize.define('gameTeam');
 
-User.belongsToMany(Game, { through: UserEvent });
+User.belongsToMany(Game, { through: UserGame });
 Team.belongsToMany(Game, { through: GameTeam });
 
 module.exports = {

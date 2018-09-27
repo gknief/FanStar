@@ -22,7 +22,7 @@ class Profile extends Component {
         <div>Favorite team: {this.state.favoriteTeam}</div>
         <div>Number of games attended: {this.state.games}</div>
         <div>Games I've attended:
-        <Games />
+        <Game />
         </div>
         </div>
         );

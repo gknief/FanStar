@@ -1,10 +1,22 @@
 import React, { Component } from "react";
-import Profile from "./Profile";
+import { BrowserRouter as Router, Link, Route } from "react-router-dom";
 import "./style.css";
+import Home from '../Home';
+import Profile from "./Profile";
+
 
 class App extends Component {
   render() {
-    return <div className="App">Hello World</div>;
+    return (
+
+
+
+
+
+
+      
+      <Home/>
+    );
   }
 }
 

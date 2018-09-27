@@ -6,27 +6,34 @@ class Signup extends Component {
         this.state = {
             email: '',
             password: '',
-            favoriteTeam: ''
+            favoriteTeam: '',
+            errorMessage: '',
         }
     }
 
     register = async () => {
-        const body = JSON.stringify({
+        const requestBody = JSON.stringify({
             email: this.state.email,
             password: this.state.password,
             favoriteTeam: this.state.favoriteTeam
         })
 
-        const responseUser = await fetch('api/register', {
+        const response = await fetch('api/register', {
             method: 'POST',
-            body: body,
+            body: requestBody,
             headers: {
                 'Content-Type': 'application/json'
             }
-        })
-        let webToken = await responseUser.json();
-        localStorage.clear();
-        localStorage.setItem('user_jwt',webToken);
+        });
+        const responseBody = await response.json();
+        if (response.status === 409) {
+            this.setState({
+                errorMessage: responseBody.message
+            });
+            return;
+        }
+        this.props.onLogin();
+        localStorage.setItem('user_jwt', JSON.stringify(responseBody.token));
     }
 
     onInputChnge = e => {

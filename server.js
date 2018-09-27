@@ -32,7 +32,9 @@ app.post('/api/register', async (request, response) => {
   });
 
   if (existingUser) {
-    response.status(409).send('User Already Exists');
+    response.status(409).json({
+      message: "That email is already registered."
+    })
     return;
   }
 
@@ -47,6 +49,38 @@ app.post('/api/register', async (request, response) => {
   response.json({
     token: token
   });
+});
+
+app.post('/api.login', async (request, response) => {
+  const { email, password } = request.body;
+  if (!email || !password) {
+    response.status(400).json({
+      error: "Please Provide an Email and Password"
+    });
+    return;
+  }
+  const existingUser = await User.findOne({
+    where: {
+      email: email
+    }
+  });
+  if (existingUser === null) {
+    response.status(401).json({
+      message: "Invalid username or password."
+    });
+    return;
+  }
+  const isPasswordCorrect = await bcrypt.compare(password, existingUser.passwordDigest);
+  if (isPasswordCorrect) {
+    const token = jwt.sign({ userId: existinguser.id }, jwtSecret);
+    response.json({
+      token: token
+    });
+  } else {
+    response.status(401).json({
+      message: 'Invalid Username or Password'
+    })
+  }
 });
 
 app.listen(PORT, () => {

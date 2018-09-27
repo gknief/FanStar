@@ -5,7 +5,8 @@ class Login extends Component {
         super(props);
         this.state = {
             email: '',
-            password: ''
+            password: '',
+            errorMessage: ''
         }
     }
 
@@ -16,7 +17,26 @@ class Login extends Component {
     }
 
     login = () => {
-        
+        const requestBody = JSON.stringify({
+            email: this.state.email,
+            password: this.state.password
+        })
+        const response = await fetch('api/login', {
+            method: 'POST',
+            body: requestBody,
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        });
+        const responseBody = await response.json();
+        if (response.status === 401) {
+            this.setState({
+                errorMessage: responseBody.message
+            });
+            return;
+        }
+        this.props.onLogIn();
+        localStorage.setItem('user_jwt', JSON.stringify(responseBody.token));
     }
 
     render() {

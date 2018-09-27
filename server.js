@@ -17,7 +17,7 @@ app.get('/api/users', async (request, response) => {
 })
 
 app.post('/api/register', async (request, response) => {
-  const { email, password } = request.body;
+  const { email, password, firstName, lastName, favoriteTeam } = request.body;
   if (!email || !password) {
     response.status(400).json({
       error: "Please Provide an Email and Password"
@@ -41,6 +41,9 @@ app.post('/api/register', async (request, response) => {
   const passwordDigest = await bcrypt.hash(password, 12);
 
   const user = await User.create({
+    firstName: firstName,
+    lastName: lastName,
+    favoriteTeam: favoriteTeam,
     email: email,
     passwordDigest: passwordDigest
   });

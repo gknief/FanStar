@@ -1,4 +1,7 @@
 import React, { Component } from "react";
+import { BrowserRouter as Router, Link, Route } from 'react-router-dom';
+import './style.css';
+
 
 class Login extends Component {
     constructor(props) {
@@ -48,9 +51,18 @@ class Login extends Component {
         return (
             <div className="Login">
                 <form onSubmit={this.onSubmit}>
-                    <input type="text" value={this.state.email} placeholder="Email" onChange={this.onInputChnge} name="email" />
-                    <input type="text" value={this.state.password} placeholder="Password" onChange={this.onInputChnge} name="password" />
+                <div className="logo-login">
+                        <Link to='/'>
+
+                            <img className="star" src="../images/fan_star_logo1.png" />
+                            <h1 className="fanstar-login"><span className="font-span">F</span>an <span className="font-span">S</span>tar</h1>
+                            </Link>
+                    </div>
+                <div className="input-container">
+                    <input type="text" value={this.state.email} placeholder="Email" onChange={this.onInputChnge} name="email" /><br></br><br></br><br></br>
+                    <input type="text" value={this.state.password} placeholder="Password" onChange={this.onInputChnge} name="password" /><br></br><br></br>
                     <button type="button" onClick={this.login}>Log In</button>
+                </div>
                 </form>
             </div>
         )

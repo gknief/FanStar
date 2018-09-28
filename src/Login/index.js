@@ -1,8 +1,8 @@
 import React, { Component } from "react";
-import { BrowserRouter as Router, Link, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Link, Route, Redirect } from 'react-router-dom';
 import './style.css';
 import Profile from '../Profile';
-import Home from '../Home';
+import PrivateRoute from "../PrivateRoute";
 
 
 class Login extends Component {
@@ -36,25 +36,32 @@ class Login extends Component {
             }
         });
         const responseBody = await response.json();
-        if (response.status === 401) {
+        if (response.status === 401 || response.status === 400) {
+            console.log('hello')
             this.setState({
                 errorMessage: responseBody.message
             });
-            return;
-        }
+        } else {
+        console.log('123')
         this.props.onLogin;
         localStorage.setItem('user_jwt', responseBody.token);
         this.setState({
             isLoggedIn: true
         })
     }
+}
 
     onSubmit = e => {
         e.preventDefault();
     }
 
     render() {
-        if (!this.state.isLoggedIn) {
+        if (this.state.isLoggedIn) {
+            const { from } = this.props.location.state || { from: { pathname: "/profile" } };
+            return (
+                <Redirect to={from} />
+            )
+        }
         return (
             <div className="login-container">
             <div className="Login">
@@ -69,16 +76,15 @@ class Login extends Component {
                 <div className="input-container">
                     <input type="text" value={this.state.email} placeholder="Email" onChange={this.onInputChnge} name="email" /><br></br><br></br><br></br>
                     <input type="text" value={this.state.password} placeholder="Password" onChange={this.onInputChnge} name="password" /><br></br><br></br>
-                    <Link to="/profile"><button type="button" onClick={this.login}>Log In</button></Link>
+                    <button type="button" onClick={this.login}>Log In</button>
+                    {this.state.errorMessage && <p class="login-error-message">{this.state.errorMessage}</p>}
                 </div>
                 </form>
             </div>
+            <PrivateRoute path="/profile" exact component={Profile} />
             </div>
         )}
-        return (
-        <Profile />
-        )
     }
-}
+
 
 export default Login;

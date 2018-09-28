@@ -5,6 +5,7 @@ import Home from '../Home';
 import Profile from "../Profile";
 import Signup from "../Signup";
 import Login from "../Login";
+import GameList from "../GameList";
 
 
 class App extends Component {
@@ -35,6 +36,7 @@ class App extends Component {
           <Route exact path="/signup" component={Signup} />
           <Route exact path="/login" component={Login} />
           <Route exact path="/profile" component={Profile} />
+          <Route exact path="/gamelist" component={GameList} />
         </div>
       </Router>
     );

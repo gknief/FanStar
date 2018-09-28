@@ -48,29 +48,11 @@ app.post('/api/register', async (request, response) => {
     passwordDigest: passwordDigest
   });
 
-  const game = await Game.create({
-    date: date,
-    time: time,
-    location: location,
-    awayTeam: awayTeam,
-    homeTeam: homeTeam
-  });
-
-  const gameSchedule = await Game.findAll({
-    where: {
-      teamId: 15
-    },
-    order: [
-      ['date', 'ASC']
-    ]
-  });
-
   const token = jwt.sign({ userId: user.id }, jwtSecret);
   response.json({
     token: token
   });
 });
-
 
 
 // GAMESLIST START

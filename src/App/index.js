@@ -31,9 +31,10 @@ class App extends Component {
           <Link to="/signup">Sign Up</Link>
           &nbsp;
         <Link to="/login">Log In</Link> */}
-          <Route exact path="/signup"  component={Signup} />
-          <Route exact path="/login"  component={Login} />
-          <Route exact path="/"  component={Home} />
+          <Route exact path="/" component={Home} />
+          <Route exact path="/signup" component={Signup} />
+          <Route exact path="/login" component={Login} />
+          <Route exact path="/profile" component={Profile} />
         </div>
       </Router>
     );

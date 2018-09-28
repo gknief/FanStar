@@ -56,6 +56,7 @@ class Login extends Component {
     render() {
         if (!this.state.isLoggedIn) {
         return (
+            <div className="login-container">
             <div className="Login">
                 <form onSubmit={this.onSubmit}>
                 <div className="logo-login">
@@ -68,9 +69,10 @@ class Login extends Component {
                 <div className="input-container">
                     <input type="text" value={this.state.email} placeholder="Email" onChange={this.onInputChnge} name="email" /><br></br><br></br><br></br>
                     <input type="text" value={this.state.password} placeholder="Password" onChange={this.onInputChnge} name="password" /><br></br><br></br>
-                    <button type="button" onClick={this.login}>Log In</button>
+                    <Link to="/profile"><button type="button" onClick={this.login}>Log In</button></Link>
                 </div>
                 </form>
+            </div>
             </div>
         )}
         return (

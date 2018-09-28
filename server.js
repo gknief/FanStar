@@ -72,7 +72,7 @@ app.post('/api/register', async (request, response) => {
 });
 
 app.get('/api/games', async (request, response) => {
-  const gameSchedule = await Game.findAll({
+  const rangersGames = await Game.findAll({
     where: {
       $or: [
         {homeTeam: 'New York Rangers'},
@@ -83,7 +83,7 @@ app.get('/api/games', async (request, response) => {
       ['date', 'ASC']
     ]
   });
-  response.json(gameSchedule)
+  response.json(rangersGames)
 })
 
 app.get('/api/teams', async (request, response) => {

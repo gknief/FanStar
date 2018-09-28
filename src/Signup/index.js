@@ -9,7 +9,7 @@ class Signup extends Component {
             lastName: '',
             email: '',
             password: '',
-            favoriteTeam: '',
+            favoriteTeam: 'Boston Bruins',
             errorMessage: '',
             isRegistered: false
         }
@@ -25,7 +25,7 @@ class Signup extends Component {
             password: this.state.password,
             favoriteTeam: this.state.favoriteTeam
         })
-        
+
         if (this.state.firstName === '') {
             alert('Please Provde Your First Name');
         } else if
@@ -63,7 +63,7 @@ class Signup extends Component {
         }
     }
 
-    onInputChnge = e => {
+    onInputChange = e => {
         this.setState({
             [e.target.name]: e.target.value
         })
@@ -74,11 +74,51 @@ class Signup extends Component {
             return (
                 <div className="Signup">
                     <form onSubmit={this.register}>
-                        <input type="text" value={this.state.firstName} placeholder="First Name" onChange={this.onInputChnge} name="firstName" />
-                        <input type="text" value={this.state.lastName} placeholder="Last Name" onChange={this.onInputChnge} name="lastName" />
-                        <input type="text" value={this.state.favoriteTeam} placeholder="Favorite Team" onChange={this.onInputChnge} name="favoriteTeam" />
-                        <input type="text" value={this.state.email} placeholder="Email" onChange={this.onInputChnge} name="email" />
-                        <input type="text" value={this.state.password} placeholder="Password" onChange={this.onInputChnge} name="password" />
+                        <input type="text" value={this.state.firstName} placeholder="First Name" onChange={this.onInputChange} name="firstName" />
+                        <input type="text" value={this.state.lastName} placeholder="Last Name" onChange={this.onInputChange} name="lastName" />
+                        <select name="favoriteTeam" onChange={this.onInputChange}>
+                                <optgroup label="Atlantic Division">
+                                    <option>Boston Bruins</option>
+                                    <option>Buffalo Sabres</option>
+                                    <option>Detroit Red Wings</option>
+                                    <option>Florida Panthers</option>
+                                    <option>Montreal Canadiens</option>
+                                    <option>Ottawa Senators</option>
+                                    <option>Tampa Bay Lightning</option>
+                                    <option>Toronto Maple Leafs</option>
+                                </optgroup>
+                                <optgroup label="Metropolitan Division">
+                                    <option>Carolina Hurricanes</option>
+                                    <option>Columbus Blue Jackets</option>
+                                    <option>New Jersey Devils</option>
+                                    <option>New York Islanders</option>
+                                    <option>New York Rangers</option>
+                                    <option>Ottawa Senators</option>
+                                    <option>Pittsburgh Penguins</option>
+                                    <option>Washington Capitals</option>
+                                </optgroup>
+                                <optgroup label="Central Division">
+                                    <option>Chicago Blackhawks</option>
+                                    <option>Colorado Avalanche</option>
+                                    <option>Dallas Stars</option>
+                                    <option>Minnesota Wild</option>
+                                    <option>Nashville Predators</option>
+                                    <option>St. Louis Blues</option>
+                                    <option>Winnipeg Jets</option>
+                                </optgroup>
+                                <optgroup label="Pacific Division">
+                                    <option >Anaheim Ducks</option>
+                                    <option>Arizona Coyotes</option>
+                                    <option>Calgary Flames</option>
+                                    <option>Edmonton Oilers</option>
+                                    <option>Los Angeles Kings</option>
+                                    <option>San Jose Sharks</option>
+                                    <option>Vancouver Canucks</option>
+                                    <option>Vegas Golden Knights</option>
+                                </optgroup>
+                        </select>
+                        <input type="text" value={this.state.email} placeholder="Email" onChange={this.onInputChange} name="email" />
+                        <input type="text" value={this.state.password} placeholder="Password" onChange={this.onInputChange} name="password" />
                         <button type="button" onClick={this.register}>Sign Up</button>
                     </form>
                 </div>

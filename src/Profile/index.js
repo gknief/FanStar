@@ -26,8 +26,8 @@ class Profile extends Component {
         <div>Number of games attended: {this.state.games}</div>
         <div>Games I've attended:
         <Game />
-        </div>
-        </div>
+                </div>
+            </div>
         );
     }
 }

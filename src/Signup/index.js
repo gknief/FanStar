@@ -1,7 +1,5 @@
 import React, { Component } from "react";
 import { BrowserRouter as Router, Link, Route, Redirect } from 'react-router-dom';
-import Profile from '../Profile';
-import PrivateRouteR from "../PrivateRouteR";
 
 class Signup extends Component {
     constructor(props) {
@@ -128,7 +126,6 @@ class Signup extends Component {
                     <input type="text" value={this.state.password} placeholder="Password" onChange={this.onInputChange} name="password" />
                     <button type="button" onClick={this.register}>Sign Up</button>
                 </form>
-                <PrivateRouteR path="/profile" exact component={Profile} />
             </div>
         )
     }

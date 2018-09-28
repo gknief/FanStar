@@ -6,6 +6,7 @@ import Profile from "../Profile";
 import Signup from "../Signup";
 import Login from "../Login";
 import GameList from "../GameList";
+import PrivateRoute from "../PrivateRoute";
 
 
 class App extends Component {
@@ -27,15 +28,10 @@ class App extends Component {
     return (
       <Router>
         <div className="App">
-          {/* <Link to='/'>Home</Link>
-          &nbsp;
-          <Link to="/signup">Sign Up</Link>
-          &nbsp;
-        <Link to="/login">Log In</Link> */}
           <Route exact path="/" component={Home} />
           <Route exact path="/signup" component={Signup} />
           <Route exact path="/login" component={Login} />
-          <Route exact path="/profile" component={Profile} />
+          <PrivateRoute exact path="/profile" component={Profile} />
           <Route exact path="/gamelist" component={GameList} />
         </div>
       </Router>

@@ -13,13 +13,20 @@ const User = sequelize.define('user', {
   passwordDigest: { type: Sequelize.STRING, unique: true }
 });
 
-const Game = sequelize.define('event', {
+const Game = sequelize.define('game', {
   date: Sequelize.DATEONLY,
-  location: Sequelize.TEXT
+  time: Sequelize.TIME,
+  location: Sequelize.TEXT,
+  awayTeam: Sequelize.TEXT,
+  homeTeam: Sequelize.TEXT,
 });
 
 const Team = sequelize.define('team', {
-  name: Sequelize.TEXT
+  name: Sequelize.TEXT,
+  arena: Sequelize.TEXT,
+  location: Sequelize.TEXT,
+  capacity: Sequelize.INTEGER,
+  opened: Sequelize.INTEGER,
 });
 
 const UserGame = sequelize.define('userGame');
@@ -27,7 +34,9 @@ const UserGame = sequelize.define('userGame');
 const GameTeam = sequelize.define('gameTeam');
 
 User.belongsToMany(Game, { through: UserGame });
+Game.belongsToMany(User, { through: UserGame });
 Team.belongsToMany(Game, { through: GameTeam });
+Game.belongsToMany(Team, { through: GameTeam });
 
 module.exports = {
   User,

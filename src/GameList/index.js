@@ -19,11 +19,12 @@ class GameList extends Component {
             {this.props.games.map(game => {
               return (
                 <Game 
-                  team1={game.team1} 
-                  team2={game.team2}
-                  date={game.date}
-                  location={game.location}
-                  gameClick={this.gameClick}
+                date={game.date}
+                time={game.time}
+                location={game.location}
+                awayTeam={game.awayTeam} 
+                homeTeam={game.homeTeam}
+                gameClick={this.gameClick}
                 />
               );
             })}

@@ -74,7 +74,7 @@ class Login extends Component {
             </div>
         )}
         return (
-        <Home />
+        <Profile />
         )
     }
 }

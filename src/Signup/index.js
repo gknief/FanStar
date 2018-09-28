@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import Profile from '../Profile';
 
 class Signup extends Component {
     constructor(props) {
@@ -10,6 +11,7 @@ class Signup extends Component {
             password: '',
             favoriteTeam: '',
             errorMessage: '',
+            isRegistered: false
         }
     }
 
@@ -36,8 +38,10 @@ class Signup extends Component {
             });
             return;
         }
-        // this.props.onLogin();
         localStorage.setItem('user_jwt', JSON.stringify(responseBody.token));
+        this.setState({
+            isRegistered: true
+        })
     }
 
     onInputChnge = e => {
@@ -47,6 +51,7 @@ class Signup extends Component {
     }
 
     render() {
+        if (!this.state.isRegistered) {
         return (
             <div className="Signup">
                 <form onSubmit={this.register}>
@@ -60,6 +65,10 @@ class Signup extends Component {
             </div>
         )
     }
+    return (
+        <Profile />
+    )
+}
 }
 
 export default Signup;

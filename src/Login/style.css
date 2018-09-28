@@ -1,0 +1,125 @@
+body {
+    margin: 0 auto;
+}
+
+.home-container {
+    background: url('http://andrewjweber.com/blog/wp-content/uploads/2014/01/eapano11.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    overflow: hidden;
+}
+
+.logo {
+    width: 50%;
+    margin-left: 225px;
+    margin-top: 10px;
+}
+
+header {
+    color: white;
+    background-color: red;
+    background-size: cover;
+    height: 50px;
+    top: 0;
+    left: 0;
+    right: 0;
+    position: fixed;
+    display: flex;
+    padding-bottom: 20px;
+}
+
+.home-nav a {
+    color: white;
+}
+
+h1 {
+    color: white;
+    font-size: 20px;
+    text-align: center;
+    margin-bottom: -50px;
+}
+
+
+.fanstar {
+    font-family: 'Lalezar', cursive;
+    color: white;
+    font-size: 100px;
+    text-align: center;
+    margin-left: 160px;
+    padding: 0;
+    margin-top: 0;
+}
+
+.f-in-fanstar {
+    font-family: 'Faster One', cursive;
+    font-size: 120px;
+    color: red;
+    text-align: center;
+}
+
+.home-buttons {
+    position: fixed;
+    bottom: 90px;
+    left: 530px;
+    width: 100px;
+    border: 5px solid white;
+    padding: 15px;
+    background-color: red;
+}
+
+.login-button {
+    width: 100px;
+    padding: 5px;
+    background-color: black;
+}
+
+.login-button a {
+    width: 100px;
+    padding: 5px;
+    color: red;
+    text-decoration: none;
+}
+
+.login-button:hover {
+    width: 100px;
+    padding: 5px;
+    background-color: white;
+    text-decoration: none;
+}
+
+.signup-button {
+    width: 100px;
+    padding: 5px;
+    background-color: black;
+}
+
+.signup-button a {
+    width: 100px;
+    padding: 5px;
+    color: red;
+    text-decoration: none;
+}
+
+.signup-button:hover {
+    width: 100px;
+    padding: 5px;
+    background-color: white;
+    text-decoration: none;
+}
+
+.video-background {
+	position: absolute;
+    top: 0;
+    left: 0;
+    border: 0;
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+	margin:0;
+	padding:0;
+}

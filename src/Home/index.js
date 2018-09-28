@@ -5,6 +5,16 @@ import Login from "../Login";
 import './style.css';
 
 export default class Home extends Component {
+
+    playSound = () => {
+        const audio = "../sounds/fansounds.mp3"
+        audio.play();
+    }
+
+    componentDidMount = () => {
+        this.playSound();
+    }
+
     render() {
         return (
 

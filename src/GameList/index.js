@@ -1,4 +1,7 @@
 import React, { Component } from "react";
+import { BrowserRouter as Router, Link, Route } from 'react-router-dom';
+import Game from "../Game";
+
 
 class GameList extends Component {
     constructor(props) {
@@ -29,4 +32,4 @@ class GameList extends Component {
     }
 }
 
-export default Game;
+export default GameList;

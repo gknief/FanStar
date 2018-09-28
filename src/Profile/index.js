@@ -16,15 +16,15 @@ class Profile extends Component {
 
     render() {
         return (
-        <div className="Profile">
-        <div>{this.state.name}</div>
-        <div>Fan rank: {this.state.rank}</div>
-        <div>Favorite team: {this.state.favoriteTeam}</div>
-        <div>Number of games attended: {this.state.games}</div>
-        <div>Games I've attended:
+            <div className="Profile">
+                <div>{this.state.name}</div>
+                <div>Fan rank: {this.state.rank}</div>
+                <div>Favorite team: {this.state.favoriteTeam}</div>
+                <div>Number of games attended: {this.state.games}</div>
+                <div>Games I've attended:
         <Game />
-        </div>
-        </div>
+                </div>
+            </div>
         );
     }
 }

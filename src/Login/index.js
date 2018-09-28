@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import { BrowserRouter as Router, Link, Route } from 'react-router-dom';
 import './style.css';
+import Profile from '../Profile';
+import Home from '../Home';
 
 
 class Login extends Component {
@@ -9,7 +11,8 @@ class Login extends Component {
         this.state = {
             email: '',
             password: '',
-            errorMessage: ''
+            errorMessage: '',
+            isLoggedIn: false
         }
     }
 
@@ -39,8 +42,11 @@ class Login extends Component {
             });
             return;
         }
-        this.props.onLogin();
+        this.props.onLogin;
         localStorage.setItem('user_jwt', responseBody.token);
+        this.setState({
+            isLoggedIn: true
+        })
     }
 
     onSubmit = e => {
@@ -48,6 +54,7 @@ class Login extends Component {
     }
 
     render() {
+        if (!this.state.isLoggedIn) {
         return (
             <div className="Login">
                 <form onSubmit={this.onSubmit}>
@@ -65,6 +72,9 @@ class Login extends Component {
                 </div>
                 </form>
             </div>
+        )}
+        return (
+        <Home />
         )
     }
 }

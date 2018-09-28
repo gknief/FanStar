@@ -2,7 +2,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
-const { User } = require('./models');
+const { User, Game, Team, UserGame, GameTeam } = require('./models');
 
 const PORT = process.env.PORT || 5678;
 const jwtSecret = 'shh1234';
@@ -48,11 +48,48 @@ app.post('/api/register', async (request, response) => {
     passwordDigest: passwordDigest
   });
 
+  const game = await Game.create({
+    date: date,
+    time: time,
+    location: location,
+    awayTeam: awayTeam,
+    homeTeam: homeTeam
+  });
+
+  const gameSchedule = await Game.findAll({
+    where: {
+      teamId: 15
+    },
+    order: [
+      ['date', 'ASC']
+    ]
+  });
+
   const token = jwt.sign({ userId: user.id }, jwtSecret);
   response.json({
     token: token
   });
 });
+
+app.get('/api/games', async (request, response) => {
+  const gameSchedule = await Game.findAll({
+    where: {
+      $or: [
+        {homeTeam: 'New York Rangers'},
+        {awayTeam: 'New York Rangers'}
+      ]
+    },
+    order: [
+      ['date', 'ASC']
+    ]
+  });
+  response.json(gameSchedule)
+})
+
+app.get('/api/teams', async (request, response) => {
+  const teams = await Team.findAll();
+  response.json(teams)
+})
 
 app.post('/api/login', async (request, response) => {
   const { email, password } = request.body;

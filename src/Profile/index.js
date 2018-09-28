@@ -9,12 +9,32 @@ class Profile extends Component {
         super(props)
 
         this.state = {
-            name: 'Grant Knief',
-            id: 1,
-            favoriteTeam: 'New York Yankees',
-            games: 30,
-            rank: 10
+            users: {},
+            games: [],
+            email: '',
+            name: '',
+            id: '',
+            favoriteTeam: '',
+            games: 0,
+            rank: 0,
         }
+    }
+
+    componentDidMount = async () => {
+        this.fetchUser();
+    }
+
+    fetchUser = async () => {
+        const response = await fetch('/api/current-user', {
+            headers: {
+                'jwt-token': localStorage.getItem('user_jwt')
+            }
+        });
+        const user = await response.json();
+        this.setState({
+            user: user
+        });
+        // console.log(this.state.user);
     }
 
     render() {

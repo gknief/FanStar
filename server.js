@@ -569,6 +569,43 @@ app.post('/api/login', async (request, response) => {
   }
 });
 
+app.get('/api/current-user', async (request, response) => {
+  const token = request.headers['jwt-token'];
+  const verify = await jwt.verify(token, jwtSecret);
+
+  // let tokenData;
+  // try {
+  //   tokenData = jwt.verify(token, jwtSecret);
+  // } catch (e) {
+  //   console.log(e);
+  // }
+
+  // console.log(tokenData);
+
+  // try {
+    const user = await User.findOne({
+      where: {
+        id: verify.userId
+      }
+    });
+    response.json({
+      userId: user.id
+    })
+    // }
+
+  // catch (error) {
+  //   return console.log(error);
+  // }
+
+  // // user.gameId = gameId;
+  // // await user.save();
+  // // response.sendStatus(200);
+
+  // response.json(user);
+});
+
+
+
 app.listen(PORT, () => {
   console.log(`Express server listening on port ${PORT}`);
 });

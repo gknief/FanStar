@@ -34,12 +34,10 @@ class Login extends Component {
     });
     const responseBody = await response.json();
     if (response.status === 401 || response.status === 400) {
-      console.log('hello')
       this.setState({
         errorMessage: responseBody.message
       });
     } else {
-      console.log('123')
       this.props.onLogin;
       localStorage.setItem('user_jwt', responseBody.token);
       this.setState({
@@ -74,7 +72,7 @@ class Login extends Component {
               <input type="text" value={this.state.email} placeholder="Email" onChange={this.onInputChnge} name="email" /><br></br><br></br><br></br>
               <input type="text" value={this.state.password} placeholder="Password" onChange={this.onInputChnge} name="password" /><br></br><br></br>
               <button type="button" onClick={this.login}>Log In</button>
-              {this.state.errorMessage && <p class="login-error-message">{this.state.errorMessage}</p>}
+              <div>{this.state.errorMessage && <p className="login-error-message">{this.state.errorMessage}</p>}</div>
             </div>
           </form>
         </div>

@@ -5,17 +5,18 @@ class Game extends Component {
         super(props)
 
         this.state = {
-            team1: '',
-            team2: '',
             date: '',
+            time: '',
             location: '',
-            gameAttended: false
+            awayTeam: [],
+            homeTeam: []
         }
     }
 
     gameClick = () => {
         this.setState({
-            gameAttended: true
+            awayTeam: this.props.awayTeam,
+            homeTeam: this.props.homeTeam
         })
         return;
     }
@@ -23,9 +24,9 @@ class Game extends Component {
     render() {
         return (
         <div className="Game">
-        <div>{this.state.team1} vs. {this.state.team2}</div> 
-        <div>Location: {this.state.location}</div>
-        <div>Date: {this.state.date}</div>
+        <div>{this.props.awayTeam} vs. {this.props.homeTeam}</div> 
+        <div>Location: {this.props.location}</div>
+        <div>Date: {this.props.date}</div>
         <div>
             <button onClick={this.state.gameClick}></button>
         </div>

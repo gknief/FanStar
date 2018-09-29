@@ -285,7 +285,7 @@ app.get('/api/wild/games', async (request, response) => {
   response.json(wildGames)
 })
 
-app.get('/api/:team/games', async (request, response) => {
+app.get('/api/canadiens/games', async (request, response) => {
   const canadiensGames = await Game.findAll({
     where: {
       $or: [

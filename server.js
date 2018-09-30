@@ -568,7 +568,26 @@ app.post('/api/login', async (request, response) => {
   }
 });
 
+// app.get('/api/current-user', async (request, response) => {
+//   const token = request.headers['jwt-token'];
+//   const verify = await jwt.verify(token, jwtSecret);
+
+//   const user = await User.findOne({
+//     where: {
+//       id: verify.userId
+//     }
+//   });
+//   response.json({
+//     userId: user.id,
+//     firstName: user.firstName,
+//     lastName: user.lastName,
+//     favoriteTeam: user.favoriteTeam,
+//     email: user.email,
+//   })
+// });
+
 app.get('/api/current-user', async (request, response) => {
+  const { gameId } = request.body;
   const token = request.headers['jwt-token'];
   const verify = await jwt.verify(token, jwtSecret);
 
@@ -577,6 +596,9 @@ app.get('/api/current-user', async (request, response) => {
       id: verify.userId
     }
   });
+  user.gameId = gameId;
+  // await user.save();
+  // response.sendStatus(200);
   response.json({
     userId: user.id,
     firstName: user.firstName,
@@ -585,6 +607,13 @@ app.get('/api/current-user', async (request, response) => {
     email: user.email,
   })
 });
+
+app.get('/api/games', async (request, response) => {
+  const games = await Game.findAll({});
+  response.json(games);
+})
+
+
 
 
 

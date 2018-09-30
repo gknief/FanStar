@@ -540,7 +540,7 @@ app.post('/api/login', async (request, response) => {
   const { email, password } = request.body;
   if (!email || !password) {
     response.status(400).json({
-      error: "Please Provide an Email and Password"
+      message: "Please Provide an Email and Password"
     });
     return;
   }

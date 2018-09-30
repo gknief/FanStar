@@ -9,12 +9,7 @@ class Profile extends Component {
         super(props)
 
         this.state = {
-            users: {},
-            games: [],
-            email: '',
-            name: '',
-            id: '',
-            favoriteTeam: '',
+            user: '',
             games: 0,
             rank: 0,
         }
@@ -34,19 +29,19 @@ class Profile extends Component {
         this.setState({
             user: user
         });
-        // console.log(this.state.user);
+        console.log(this.state.user);
     }
 
     render() {
         return (
             <div className="Profile">
-                <div>{this.state.name}</div>
+                <div>Name: {this.state.user.firstName} {this.state.user.lastName}</div>
                 <div>Fan rank: {this.state.rank}</div>
-                <div>Favorite team: {this.state.favoriteTeam}</div>
+                <div>Favorite team: {this.state.user.favoriteTeam}</div>
                 <div><Link to="./gamelist"><button className="add-game-button">Add new game:</button></Link> </div>
                 <div>Number of games attended: {this.state.games}</div>
                 <div>Games I've attended:
-                <Game />
+                <Game/>
                 </div>
             </div>
         );

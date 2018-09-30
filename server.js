@@ -62,8 +62,8 @@ app.get('/api/ducks/games', async (request, response) => {
   const ducksGames = await Game.findAll({
     where: {
       $or: [
-        {homeTeam: 'Anaheim Ducks'},
-        {awayTeam: 'Anaheim Ducks'}
+        { homeTeam: 'Anaheim Ducks' },
+        { awayTeam: 'Anaheim Ducks' }
       ]
     },
     order: [
@@ -77,8 +77,8 @@ app.get('/api/coyotes/games', async (request, response) => {
   const coyotesGames = await Game.findAll({
     where: {
       $or: [
-        {homeTeam: 'Arizona Coyotes'},
-        {awayTeam: 'Arizona Coyotes'}
+        { homeTeam: 'Arizona Coyotes' },
+        { awayTeam: 'Arizona Coyotes' }
       ]
     },
     order: [
@@ -92,8 +92,8 @@ app.get('/api/bruins/games', async (request, response) => {
   const bruinsGames = await Game.findAll({
     where: {
       $or: [
-        {homeTeam: 'Boston Bruins'},
-        {awayTeam: 'Boston Bruins'}
+        { homeTeam: 'Boston Bruins' },
+        { awayTeam: 'Boston Bruins' }
       ]
     },
     order: [
@@ -107,8 +107,8 @@ app.get('/api/sabres/games', async (request, response) => {
   const sabresGames = await Game.findAll({
     where: {
       $or: [
-        {homeTeam: 'Buffalo Sabres'},
-        {awayTeam: 'Buffalo Sabres'}
+        { homeTeam: 'Buffalo Sabres' },
+        { awayTeam: 'Buffalo Sabres' }
       ]
     },
     order: [
@@ -123,8 +123,8 @@ app.get('/api/flames/games', async (request, response) => {
   const flamesGames = await Game.findAll({
     where: {
       $or: [
-        {homeTeam: 'Calgary Flames'},
-        {awayTeam: 'Calgary Flames'}
+        { homeTeam: 'Calgary Flames' },
+        { awayTeam: 'Calgary Flames' }
       ]
     },
     order: [
@@ -138,8 +138,8 @@ app.get('/api/hurricanes/games', async (request, response) => {
   const hurricanesGames = await Game.findAll({
     where: {
       $or: [
-        {homeTeam: 'Carolina Hurricanes'},
-        {awayTeam: 'Carolina Hurricanes'}
+        { homeTeam: 'Carolina Hurricanes' },
+        { awayTeam: 'Carolina Hurricanes' }
       ]
     },
     order: [
@@ -154,8 +154,8 @@ app.get('/api/blackhawks/games', async (request, response) => {
   const blackhawksGames = await Game.findAll({
     where: {
       $or: [
-        {homeTeam: 'Chicago Blackhawks'},
-        {awayTeam: 'Chicago Blackhawks'}
+        { homeTeam: 'Chicago Blackhawks' },
+        { awayTeam: 'Chicago Blackhawks' }
       ]
     },
     order: [
@@ -169,8 +169,8 @@ app.get('/api/avalanche/games', async (request, response) => {
   const avalancheGames = await Game.findAll({
     where: {
       $or: [
-        {homeTeam: 'Colorado Avalanche'},
-        {awayTeam: 'Colorado Avalanche'}
+        { homeTeam: 'Colorado Avalanche' },
+        { awayTeam: 'Colorado Avalanche' }
       ]
     },
     order: [
@@ -184,8 +184,8 @@ app.get('/api/bluejackets/games', async (request, response) => {
   const blueJacketsGames = await Game.findAll({
     where: {
       $or: [
-        {homeTeam: 'Columbus Blue Jackets'},
-        {awayTeam: 'Columbus Blue Jackets'}
+        { homeTeam: 'Columbus Blue Jackets' },
+        { awayTeam: 'Columbus Blue Jackets' }
       ]
     },
     order: [
@@ -199,8 +199,8 @@ app.get('/api/stars/games', async (request, response) => {
   const starsGames = await Game.findAll({
     where: {
       $or: [
-        {homeTeam: 'Dallas Stars'},
-        {awayTeam: 'Dallas Stars'}
+        { homeTeam: 'Dallas Stars' },
+        { awayTeam: 'Dallas Stars' }
       ]
     },
     order: [
@@ -214,8 +214,8 @@ app.get('/api/redwings/games', async (request, response) => {
   const redWingsGames = await Game.findAll({
     where: {
       $or: [
-        {homeTeam: 'Detroit Red Wings'},
-        {awayTeam: 'Detroit Red Wings'}
+        { homeTeam: 'Detroit Red Wings' },
+        { awayTeam: 'Detroit Red Wings' }
       ]
     },
     order: [
@@ -229,8 +229,8 @@ app.get('/api/oilers/games', async (request, response) => {
   const oilersGames = await Game.findAll({
     where: {
       $or: [
-        {homeTeam: 'Edmonton Oilers'},
-        {awayTeam: 'Edmonton Oilers'}
+        { homeTeam: 'Edmonton Oilers' },
+        { awayTeam: 'Edmonton Oilers' }
       ]
     },
     order: [
@@ -244,8 +244,8 @@ app.get('/api/panthers/games', async (request, response) => {
   const panthersGames = await Game.findAll({
     where: {
       $or: [
-        {homeTeam: 'Florida Panthers'},
-        {awayTeam: 'Florida Panthers'}
+        { homeTeam: 'Florida Panthers' },
+        { awayTeam: 'Florida Panthers' }
       ]
     },
     order: [
@@ -259,8 +259,8 @@ app.get('/api/kings/games', async (request, response) => {
   const kingsGames = await Game.findAll({
     where: {
       $or: [
-        {homeTeam: 'Los Angeles Kings'},
-        {awayTeam: 'Los Angeles Kings'}
+        { homeTeam: 'Los Angeles Kings' },
+        { awayTeam: 'Los Angeles Kings' }
       ]
     },
     order: [
@@ -274,8 +274,8 @@ app.get('/api/wild/games', async (request, response) => {
   const wildGames = await Game.findAll({
     where: {
       $or: [
-        {homeTeam: 'Minnesota Wild'},
-        {awayTeam: 'Minnesota Wild'}
+        { homeTeam: 'Minnesota Wild' },
+        { awayTeam: 'Minnesota Wild' }
       ]
     },
     order: [
@@ -289,8 +289,8 @@ app.get('/api/:team/games', async (request, response) => {
   const canadiensGames = await Game.findAll({
     where: {
       $or: [
-        {homeTeam: 'Montreal Canadiens'},
-        {awayTeam: 'Montreal Canadiens'}
+        { homeTeam: 'Montreal Canadiens' },
+        { awayTeam: 'Montreal Canadiens' }
       ]
     },
     order: [
@@ -304,8 +304,8 @@ app.get('/api/predators/games', async (request, response) => {
   const predatorsGames = await Game.findAll({
     where: {
       $or: [
-        {homeTeam: 'Nashville Predators'},
-        {awayTeam: 'Nashville Predators'}
+        { homeTeam: 'Nashville Predators' },
+        { awayTeam: 'Nashville Predators' }
       ]
     },
     order: [
@@ -319,8 +319,8 @@ app.get('/api/devils/games', async (request, response) => {
   const devilsGames = await Game.findAll({
     where: {
       $or: [
-        {homeTeam: 'New Jersey Devils'},
-        {awayTeam: 'New Jersey Devils'}
+        { homeTeam: 'New Jersey Devils' },
+        { awayTeam: 'New Jersey Devils' }
       ]
     },
     order: [
@@ -334,8 +334,8 @@ app.get('/api/islanders/games', async (request, response) => {
   const islandersGames = await Game.findAll({
     where: {
       $or: [
-        {homeTeam: 'New York Islanders'},
-        {awayTeam: 'New York Islanders'}
+        { homeTeam: 'New York Islanders' },
+        { awayTeam: 'New York Islanders' }
       ]
     },
     order: [
@@ -349,8 +349,8 @@ app.get('/api/rangers/games', async (request, response) => {
   const rangersGames = await Game.findAll({
     where: {
       $or: [
-        {homeTeam: 'New York Rangers'},
-        {awayTeam: 'New York Rangers'}
+        { homeTeam: 'New York Rangers' },
+        { awayTeam: 'New York Rangers' }
       ]
     },
     order: [
@@ -364,8 +364,8 @@ app.get('/api/senators/games', async (request, response) => {
   const senatorsGames = await Game.findAll({
     where: {
       $or: [
-        {homeTeam: 'Ottawa Senators'},
-        {awayTeam: 'Ottawa Senators'}
+        { homeTeam: 'Ottawa Senators' },
+        { awayTeam: 'Ottawa Senators' }
       ]
     },
     order: [
@@ -379,8 +379,8 @@ app.get('/api/flyers/games', async (request, response) => {
   const flyersGames = await Game.findAll({
     where: {
       $or: [
-        {homeTeam: 'Philadelphia Flyers'},
-        {awayTeam: 'Philadelphia Flyers'}
+        { homeTeam: 'Philadelphia Flyers' },
+        { awayTeam: 'Philadelphia Flyers' }
       ]
     },
     order: [
@@ -394,8 +394,8 @@ app.get('/api/penguins/games', async (request, response) => {
   const penguinsGames = await Game.findAll({
     where: {
       $or: [
-        {homeTeam: 'Pittsburgh Penguins'},
-        {awayTeam: 'Pittsburgh Penguins'}
+        { homeTeam: 'Pittsburgh Penguins' },
+        { awayTeam: 'Pittsburgh Penguins' }
       ]
     },
     order: [
@@ -409,8 +409,8 @@ app.get('/api/sharks/games', async (request, response) => {
   const sharksGames = await Game.findAll({
     where: {
       $or: [
-        {homeTeam: 'San Jose Sharks'},
-        {awayTeam: 'San Jose Sharks'}
+        { homeTeam: 'San Jose Sharks' },
+        { awayTeam: 'San Jose Sharks' }
       ]
     },
     order: [
@@ -424,8 +424,8 @@ app.get('/api/blues/games', async (request, response) => {
   const bluesGames = await Game.findAll({
     where: {
       $or: [
-        {homeTeam: 'St. Louis Blues'},
-        {awayTeam: 'St. Louis Blues'}
+        { homeTeam: 'St. Louis Blues' },
+        { awayTeam: 'St. Louis Blues' }
       ]
     },
     order: [
@@ -439,8 +439,8 @@ app.get('/api/lightning/games', async (request, response) => {
   const lightningGames = await Game.findAll({
     where: {
       $or: [
-        {homeTeam: 'Tampa Bay Lightning'},
-        {awayTeam: 'Tampa Bay Lightning'}
+        { homeTeam: 'Tampa Bay Lightning' },
+        { awayTeam: 'Tampa Bay Lightning' }
       ]
     },
     order: [
@@ -454,8 +454,8 @@ app.get('/api/mapleleafs/games', async (request, response) => {
   const mapleLeafsGames = await Game.findAll({
     where: {
       $or: [
-        {homeTeam: 'Toronto Maple Leafs'},
-        {awayTeam: 'Toronto Maple Leafs'}
+        { homeTeam: 'Toronto Maple Leafs' },
+        { awayTeam: 'Toronto Maple Leafs' }
       ]
     },
     order: [
@@ -469,8 +469,8 @@ app.get('/api/canucks/games', async (request, response) => {
   const canucksGames = await Game.findAll({
     where: {
       $or: [
-        {homeTeam: 'Vancouver Canucks'},
-        {awayTeam: 'Vancouver Canucks'}
+        { homeTeam: 'Vancouver Canucks' },
+        { awayTeam: 'Vancouver Canucks' }
       ]
     },
     order: [
@@ -484,8 +484,8 @@ app.get('/api/goldenknights/games', async (request, response) => {
   const goldenKnightsGames = await Game.findAll({
     where: {
       $or: [
-        {homeTeam: 'Vegas Golden Knights'},
-        {awayTeam: 'Vegas Golden Knights'}
+        { homeTeam: 'Vegas Golden Knights' },
+        { awayTeam: 'Vegas Golden Knights' }
       ]
     },
     order: [
@@ -499,8 +499,8 @@ app.get('/api/capitals/games', async (request, response) => {
   const capitalsGames = await Game.findAll({
     where: {
       $or: [
-        {homeTeam: 'Washington Capitals'},
-        {awayTeam: 'Washington Capitals'}
+        { homeTeam: 'Washington Capitals' },
+        { awayTeam: 'Washington Capitals' }
       ]
     },
     order: [
@@ -514,8 +514,8 @@ app.get('/api/jets/games', async (request, response) => {
   const jetsGames = await Game.findAll({
     where: {
       $or: [
-        {homeTeam: 'Winnipeg Jets'},
-        {awayTeam: 'Winnipeg Jets'}
+        { homeTeam: 'Winnipeg Jets' },
+        { awayTeam: 'Winnipeg Jets' }
       ]
     },
     order: [
@@ -572,35 +572,18 @@ app.get('/api/current-user', async (request, response) => {
   const token = request.headers['jwt-token'];
   const verify = await jwt.verify(token, jwtSecret);
 
-  // let tokenData;
-  // try {
-  //   tokenData = jwt.verify(token, jwtSecret);
-  // } catch (e) {
-  //   console.log(e);
-  // }
-
-  // console.log(tokenData);
-
-  // try {
-    const user = await User.findOne({
-      where: {
-        id: verify.userId
-      }
-    });
-    response.json({
-      userId: user.id
-    })
-    // }
-
-  // catch (error) {
-  //   return console.log(error);
-  // }
-
-  // // user.gameId = gameId;
-  // // await user.save();
-  // // response.sendStatus(200);
-
-  // response.json(user);
+  const user = await User.findOne({
+    where: {
+      id: verify.userId
+    }
+  });
+  response.json({
+    userId: user.id,
+    firstName: user.firstName,
+    lastName: user.lastName,
+    favoriteTeam: user.favoriteTeam,
+    email: user.email,
+  })
 });
 
 

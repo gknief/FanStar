@@ -115,13 +115,29 @@ app.post('/api/:id/userGames', async (request, response) => {
   const gameId = request.params.id
   const token = request.headers['jwt-token'];
   const verify = await jwt.verify(token, jwtSecret);
-  
+
   const userGame = await UserGame.create({
     userId: verify.userId,
     gameId: gameId,
   });
   response.json(userGame);
 });
+
+app.get('/api/:id/userGames', async (request, response) => {
+  const userId = request.params.id
+  const sequelizeOptions = {};
+  
+  sequelizeOptions.include = {
+    model: User,
+    where: {
+      id: userId,
+    },
+    attributes: []
+  }
+  const userGame = await Game.findAll(sequelizeOptions);
+  response.json(userGame);
+});
+
 
 app.get('/api/teams', async (request, response) => {
   const teams = await Team.findAll();

@@ -23,8 +23,9 @@ class GamesAttended extends Component {
   }
 
   fetchGames = async () => {
-    const response = await fetch(`/api/${this.state.user.userId}/userGames`)
     console.log('hello');
+    const response = await fetch(`/api/${this.state.user.userId}/userGames`);
+   
 
     const gameList = await response.json();
     console.log(gameList);

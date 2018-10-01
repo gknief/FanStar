@@ -4,17 +4,11 @@ class Game extends Component {
   constructor(props) {
     super(props)
 
-        this.state = {
-            date: '',
-            time: '',
-            location: '',
-            awayTeam: [],
-            homeTeam: []
-        }
     this.state = {
       gameAttended: false
     }
   }
+
 
   gameClick = () => {
     this.setState({

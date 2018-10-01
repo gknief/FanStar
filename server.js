@@ -16,6 +16,11 @@ app.get('/api/users', async (request, response) => {
   response.json(users);
 })
 
+app.get('/api/games', async (request, response) => {
+  const gameList = await Game.findAll({});
+  response.json(gameList);
+})
+
 app.post('/api/register', async (request, response) => {
   const { email, password, firstName, lastName, favoriteTeam } = request.body;
   if (!email || !password) {

@@ -8,27 +8,38 @@ class GameList extends Component {
         super(props)
 
         this.state = {
-    
+            gameList: []
         }
+    }
+
+    componentDidMount = async () => {
+        this.fetchGames();
+    }
+
+    fetchGames = async () => {
+        const response = await fetch('/api/games')
+        const gameList = await response.json();
+        this.setState({
+          gameList: gameList
+        })
     }
 
     render() {
         return (
-        <div className="GameList">
-            <h1 className="game-list-section">GAMES</h1>
-            {this.props.games.map(game => {
-              return (
-                <Game 
-                date={game.date}
-                time={game.time}
-                location={game.location}
-                awayTeam={game.awayTeam} 
-                homeTeam={game.homeTeam}
-                gameClick={this.gameClick}
-                />
-              );
-            })}
-          </div>
+        <div className="game-list-page">
+        {this.state.gameList.map(game => {
+          return (
+            <Game
+              key={game.id}
+              homeTeam={game.homeTeam}
+              awayTeam={game.awayTeam}
+              location={game.location}
+              date={game.date}
+            />
+          );
+        })}
+      </div>
+
         );
     }
 }

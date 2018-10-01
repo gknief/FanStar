@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { BrowserRouter as Router, Link, Route } from 'react-router-dom';
 import GameList from "../GameList";
 import Game from "../Game";
+import GamesAttended from "../GamesAttended"
 import "./style.css";
 
 class Profile extends Component {
@@ -88,93 +89,94 @@ class Profile extends Component {
         }
     }
 
-    onInputChange = e => {
-        this.setState({
-            [e.target.name]: e.target.value
-        })
-    }
+  onInputChange = e => {
+    this.setState({
+      [e.target.name]: e.target.value
+    })
+  }
 
-    logout = () => {
-        localStorage.clear();
-    }
+  logout = () => {
+      localStorage.clear();
+  }
 
-    renderForm() {
-        return (
-            <div className="Profile">
-                <form onSubmit={this.save}>
-                    <input type="text" value={this.state.firstName} placeholder="First Name" onChange={this.onInputChange} name="firstName" />
-                    <input type="text" value={this.state.lastName} placeholder="Last Name" onChange={this.onInputChange} name="lastName" />
-                    <select name="favoriteTeam" onChange={this.onInputChange}>
-                        <optgroup label="Atlantic Division">
-                            <option>Boston Bruins</option>
-                            <option>Buffalo Sabres</option>
-                            <option>Detroit Red Wings</option>
-                            <option>Florida Panthers</option>
-                            <option>Montreal Canadiens</option>
-                            <option>Ottawa Senators</option>
-                            <option>Tampa Bay Lightning</option>
-                            <option>Toronto Maple Leafs</option>
-                        </optgroup>
-                        <optgroup label="Metropolitan Division">
-                            <option>Carolina Hurricanes</option>
-                            <option>Columbus Blue Jackets</option>
-                            <option>New Jersey Devils</option>
-                            <option>New York Islanders</option>
-                            <option>New York Rangers</option>
-                            <option>Philadelphia Flyers</option>
-                            <option>Pittsburgh Penguins</option>
-                            <option>Washington Capitals</option>
-                        </optgroup>
-                        <optgroup label="Central Division">
-                            <option>Chicago Blackhawks</option>
-                            <option>Colorado Avalanche</option>
-                            <option>Dallas Stars</option>
-                            <option>Minnesota Wild</option>
-                            <option>Nashville Predators</option>
-                            <option>St. Louis Blues</option>
-                            <option>Winnipeg Jets</option>
-                        </optgroup>
-                        <optgroup label="Pacific Division">
-                            <option >Anaheim Ducks</option>
-                            <option>Arizona Coyotes</option>
-                            <option>Calgary Flames</option>
-                            <option>Edmonton Oilers</option>
-                            <option>Los Angeles Kings</option>
-                            <option>San Jose Sharks</option>
-                            <option>Vancouver Canucks</option>
-                            <option>Vegas Golden Knights</option>
-                        </optgroup>
-                    </select>
-                    <input type="text" value={this.state.email} placeholder="Email" onChange={this.onInputChange} name="email" />
-                    <button type="button" onClick={this.save}>Save</button>
-                </form>
-                <div>{this.state.errorMessage}</div>
-            </div>
+  renderForm() {
+    return (
+      <div className="Profile">
+        <form onSubmit={this.save}>
+          <input type="text" value={this.state.user.firstName} placeholder="First Name" onChange={this.onInputChange} name="firstName" />
+          <input type="text" value={this.state.user.lastName} placeholder="Last Name" onChange={this.onInputChange} name="lastName" />
+          <select name="favoriteTeam" onChange={this.onInputChange}>
+            <optgroup label="Atlantic Division">
+              <option>Boston Bruins</option>
+              <option>Buffalo Sabres</option>
+              <option>Detroit Red Wings</option>
+              <option>Florida Panthers</option>
+              <option>Montreal Canadiens</option>
+              <option>Ottawa Senators</option>
+              <option>Tampa Bay Lightning</option>
+              <option>Toronto Maple Leafs</option>
+            </optgroup>
+            <optgroup label="Metropolitan Division">
+              <option>Carolina Hurricanes</option>
+              <option>Columbus Blue Jackets</option>
+              <option>New Jersey Devils</option>
+              <option>New York Islanders</option>
+              <option>New York Rangers</option>
+              <option>Philadelphia Flyers</option>
+              <option>Pittsburgh Penguins</option>
+              <option>Washington Capitals</option>
+            </optgroup>
+            <optgroup label="Central Division">
+              <option>Chicago Blackhawks</option>
+              <option>Colorado Avalanche</option>
+              <option>Dallas Stars</option>
+              <option>Minnesota Wild</option>
+              <option>Nashville Predators</option>
+              <option>St. Louis Blues</option>
+              <option>Winnipeg Jets</option>
+            </optgroup>
+            <optgroup label="Pacific Division">
+              <option >Anaheim Ducks</option>
+              <option>Arizona Coyotes</option>
+              <option>Calgary Flames</option>
+              <option>Edmonton Oilers</option>
+              <option>Los Angeles Kings</option>
+              <option>San Jose Sharks</option>
+              <option>Vancouver Canucks</option>
+              <option>Vegas Golden Knights</option>
+            </optgroup>
+          </select>
+          <input type="text" value={this.state.user.email} placeholder="Email" onChange={this.onInputChange} name="email" />
+          <button type="button" onClick={this.save}>Save</button>
+        </form>
+        <div>{this.state.errorMessage}</div>
+      </div>
 
-        );
-    }
+    );
+  }
 
-    renderDisplay() {
-        return (
-            <div className="Profile">
-                <Link to="/"><button className="logout" onClick={this.logout}>Log Out</button></Link>
-                <button onClick={this.edit} className="edit">Edit</button>
-                <div>Name: {this.state.user.firstName} {this.state.user.lastName}</div>
-                <div>Email: {this.state.user.email}</div>
-                <div>Fan rank: {this.state.rank}</div>
-                <div>Favorite team: {this.state.user.favoriteTeam}</div>
-                <div><Link to="./gamelist"><button className="add-game-button">Add new game:</button></Link> </div>
-                <div>Number of games attended: {this.state.games}</div>
-                <div>Games I've attended:{}</div>
-            </div>
+  renderDisplay() {
+    return (
+      <div className="Profile">
+        <Link to="/"><button className="logout" onClick={this.logout}>Log Out</button></Link>
+        <button onClick={this.edit} className="edit">Edit</button>
+        <div>Name: {this.state.user.firstName} {this.state.user.lastName}</div>
+        <div>Email: {this.state.user.email}</div>
+        <div>Fan rank: {this.state.rank}</div>
+        <div>Favorite team: {this.state.user.favoriteTeam}</div>
+        <div><Link to="./gamelist"><button className="add-game-button">Add new game:</button></Link> </div>
+        <div>Number of games attended: {this.state.games}</div>
+        <div>Games I've attended:{}</div>
+        <GamesAttended/>
+      </div>
 
 
-        );
-    }
+    );
+  }
 
-    render() {
-        return this.state.editProfile ? this.renderForm() : this.renderDisplay();
-    }
+  render() {
+    return this.state.editProfile ? this.renderForm() : this.renderDisplay();
+  }
 }
 
 export default Profile;

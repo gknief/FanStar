@@ -27,8 +27,10 @@ class GameList extends Component {
     console.log(this.state.user.favoriteTeam);
     
     const gameList = await response.json();
+    console.log(gameList);
+    
     this.setState({
-      gameList: gameList
+      gameList: gameList,
     })
   }
 
@@ -55,9 +57,7 @@ class GameList extends Component {
         'jwt-token': localStorage.getItem('user_jwt')
       }
     });
-    // this.fetchUser();
   }
-
 
     render() {
       if (this.state.addEvent) {

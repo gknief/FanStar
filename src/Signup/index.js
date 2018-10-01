@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { BrowserRouter as Router, Link, Route, Redirect } from 'react-router-dom';
+import "./style.css";
 
 class Signup extends Component {
     constructor(props) {
@@ -79,9 +80,20 @@ class Signup extends Component {
         }
         return (
             <div className="Signup">
+            <div className="registration-form">
                 <form onSubmit={this.register}>
+                <div className="logo-login">
+              <Link to='/'>
+
+                <img className="star" src="../images/fan_star_logo1.png" />
+                <h1 className="fanstar-login"><span className="font-span">F</span>an <span className="font-span">S</span>tar</h1>
+              </Link>
+            </div>
+            <div className="input-container">
                     <input type="text" value={this.state.firstName} placeholder="First Name" onChange={this.onInputChange} name="firstName" />
                     <input type="text" value={this.state.lastName} placeholder="Last Name" onChange={this.onInputChange} name="lastName" />
+                    <input type="text" value={this.state.email} placeholder="Email" onChange={this.onInputChange} name="email" />
+                    <input type="text" value={this.state.password} placeholder="Password" onChange={this.onInputChange} name="password" />
                     <select name="favoriteTeam" onChange={this.onInputChange}>
                         <optgroup label="Atlantic Division">
                             <option>Boston Bruins</option>
@@ -123,11 +135,13 @@ class Signup extends Component {
                             <option>Vegas Golden Knights</option>
                         </optgroup>
                     </select>
-                    <input type="text" value={this.state.email} placeholder="Email" onChange={this.onInputChange} name="email" />
-                    <input type="text" value={this.state.password} placeholder="Password" onChange={this.onInputChange} name="password" />
-                    <input type="submit" onClick={this.register} value="Sign Up" />
+                    <br></br>
+                    <button type="button" onClick={this.register} className="signup-button">Sign Up</button>
+                    <div>{this.state.errorMessage}</div>
+                    </div>
                 </form>
-                <div>{this.state.errorMessage}</div>
+                </div>
+            
             </div>
         )
     }

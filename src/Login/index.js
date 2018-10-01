@@ -72,7 +72,7 @@ class Login extends Component {
             <div className="input-container">
               <input type="text" value={this.state.email} placeholder="Email" onChange={this.onInputChnge} name="email" /><br></br><br></br><br></br>
               <input type="password" value={this.state.password} placeholder="Password" onChange={this.onInputChnge} name="password" /><br></br><br></br>
-              <input type="submit" onClick={this.login} value="Log In" />
+              <button type="button" onClick={this.login}>Log In</button>
               <div>{this.state.errorMessage && <p className="login-error-message">{this.state.errorMessage}</p>}</div>
             </div>
           </form>

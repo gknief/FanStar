@@ -6,87 +6,88 @@ import GamesAttended from "../GamesAttended"
 import "./style.css";
 
 class Profile extends Component {
-  constructor(props) {
-    super(props)
+    constructor(props) {
+        super(props)
 
-    this.state = {
-      user: '',
-      games: 0,
-      rank: 0,
-      editProfile: false,
-    }
-  }
-
-  componentDidMount = () => {
-    this.fetchUser();
-    let textArea;
-    if (this.state.editProfile) {
-      textArea = this.newText
-      textArea.focus()
-      textArea.select()
-    }
-  }
-
-  fetchUser = async () => {
-    const response = await fetch('/api/current-user', {
-      headers: {
-        'jwt-token': localStorage.getItem('user_jwt')
-      }
-    });
-    const user = await response.json();
-    this.setState({
-      user: user
-    });
-    console.log(this.state.user);
-  }
-
-  edit = () => {
-    this.setState({
-      editProfile: true,
-    })
-  }
-
-  save = async (e) => {
-    e.preventDefault();
-
-    const emailRegex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
-    const requestBody = JSON.stringify({
-      firstName: this.state.user.firstName,
-      lastName: this.state.user.lastName,
-      email: this.state.user.email,
-      favoriteTeam: this.state.user.favoriteTeam
-    })
-
-    if (this.state.user.firstName === '') {
-      alert('Please Provde Your First Name');
-    } else if
-    (this.state.user.lastName === '') {
-      alert('Please Provde Your Last Name');
-    } else if
-    (!emailRegex.test(this.state.user.email)) {
-      alert('Please Provide Valid Email Address');
-    } else {
-
-      const response = await fetch('api/register', {
-        method: 'PUT',
-        body: requestBody,
-        headers: {
-          'Content-Type': 'application/json'
+        this.state = {
+            user: '',
+            games: 0,
+            rank: 0,
+            editProfile: false
         }
-      });
-      const responseBody = await response.json();
-      if (response.status === 409) {
-        this.setState({
-          errorMessage: responseBody.message
-        });
-        return;
-      }
-      localStorage.setItem('user_jwt', JSON.stringify(responseBody.token));
-      this.setState({
-        isRegistered: true
-      })
     }
-  }
+
+    componentDidMount = () => {
+        this.fetchUser();
+        let textArea;
+        if (this.state.editProfile) {
+            textArea = this.newText
+            textArea.focus()
+            textArea.select()
+        }
+    }
+
+    fetchUser = async () => {
+        const response = await fetch('/api/current-user', {
+            headers: {
+                'jwt-token': localStorage.getItem('user_jwt')
+            }
+        });
+        const user = await response.json();
+        this.setState({
+            user: user
+        });
+        console.log(this.state.user);
+    }
+
+    edit = () => {
+        this.setState({
+            editProfile: true,
+        })
+    }
+
+    save = async (e) => {
+        e.preventDefault();
+
+        const emailRegex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+        const requestBody = JSON.stringify({
+            firstName: this.state.firstName,
+            lastName: this.state.lastName,
+            email: this.state.email,
+            favoriteTeam: this.state.favoriteTeam,
+            password: this.state.password
+        })
+
+        if (this.state.firstName === '') {
+            alert('Please Provde Your First Name');
+        } else if
+        (this.state.lastName === '') {
+            alert('Please Provde Your Last Name');
+        } else if
+        (!emailRegex.test(this.state.email)) {
+            alert('Please Provide Valid Email Address');
+        } else {
+
+            const response = await fetch('api/update', {
+                method: 'PUT',
+                body: requestBody,
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            });
+            const responseBody = await response.json();
+            if (response.status === 409) {
+                this.setState({
+                    errorMessage: responseBody.message
+                });
+                return;
+            }
+            localStorage.setItem('user_jwt', JSON.stringify(responseBody.token));
+            this.setState({
+                isRegistered: false
+            })
+        }
+    }
 
   onInputChange = e => {
     this.setState({

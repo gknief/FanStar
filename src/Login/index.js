@@ -19,7 +19,8 @@ class Login extends Component {
     })
   }
 
-  login = async () => {
+  login = async e => {
+    e.preventDefault();
     const requestBody = JSON.stringify({
       email: this.state.email,
       password: this.state.password,
@@ -60,7 +61,7 @@ class Login extends Component {
     return (
       <div className="login-container">
         <div className="Login">
-          <form onSubmit={this.onSubmit}>
+          <form onSubmit={this.login}>
             <div className="logo-login">
               <Link to='/'>
 

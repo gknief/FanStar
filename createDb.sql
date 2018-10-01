@@ -1,3 +1,3 @@
-DROP DATABASE fanstar_db;
+DROP DATABASE fanstar_db; 
 CREATE DATABASE fanstar_db;
 

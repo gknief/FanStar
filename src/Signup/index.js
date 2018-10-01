@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { BrowserRouter as Router, Link, Route, Redirect } from 'react-router-dom';
+import "./style.css";
 
 class Signup extends Component {
     constructor(props) {
@@ -15,7 +16,8 @@ class Signup extends Component {
         }
     }
 
-    register = async () => {
+    register = async e => {
+        e.preventDefault();
         const emailRegex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
         const passwordRegex = /^(?=.*[0-9])(?=.*[!@#\$%\^&\*])/
         const requestBody = JSON.stringify({
@@ -56,7 +58,7 @@ class Signup extends Component {
                 });
                 return;
             }
-            localStorage.setItem('user_jwt', JSON.stringify(responseBody.token));
+            localStorage.setItem('user_jwt', responseBody.token);
             this.setState({
                 isRegistered: true
             })
@@ -78,9 +80,20 @@ class Signup extends Component {
         }
         return (
             <div className="Signup">
+            <div className="registration-form">
                 <form onSubmit={this.register}>
+                <div className="logo-login">
+              <Link to='/'>
+
+                <img className="star" src="../images/fan_star_logo1.png" />
+                <h1 className="fanstar-login"><span className="font-span">F</span>an <span className="font-span">S</span>tar</h1>
+              </Link>
+            </div>
+            <div className="input-container">
                     <input type="text" value={this.state.firstName} placeholder="First Name" onChange={this.onInputChange} name="firstName" />
                     <input type="text" value={this.state.lastName} placeholder="Last Name" onChange={this.onInputChange} name="lastName" />
+                    <input type="text" value={this.state.email} placeholder="Email" onChange={this.onInputChange} name="email" />
+                    <input type="text" value={this.state.password} placeholder="Password" onChange={this.onInputChange} name="password" />
                     <select name="favoriteTeam" onChange={this.onInputChange}>
                         <optgroup label="Atlantic Division">
                             <option>Boston Bruins</option>
@@ -122,11 +135,13 @@ class Signup extends Component {
                             <option>Vegas Golden Knights</option>
                         </optgroup>
                     </select>
-                    <input type="text" value={this.state.email} placeholder="Email" onChange={this.onInputChange} name="email" />
-                    <input type="text" value={this.state.password} placeholder="Password" onChange={this.onInputChange} name="password" />
-                    <button type="button" onClick={this.register}>Sign Up</button>
+                    <br></br>
+                    <button type="button" onClick={this.register} className="signup-button">Sign Up</button>
+                    <div>{this.state.errorMessage}</div>
+                    </div>
                 </form>
-                <div>{this.state.errorMessage}</div>
+                </div>
+            
             </div>
         )
     }

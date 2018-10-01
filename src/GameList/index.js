@@ -54,6 +54,16 @@ class GameList extends Component {
     this.fetchUser();
   }
 
+  countGames = async id => {
+    await fetch(`/api/${id}/userGames`, {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        'jwt-token': localStorage.getItem('user_jwt')
+      }
+    });
+    this.fetchUser();
+  }
 
     render() {
       return (

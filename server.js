@@ -106,6 +106,21 @@ app.post('/api/:id/userGames', async (request, response) => {
   response.json(userGame);
 });
 
+app.get('api/:id/userGames', async (request, response) => {
+  const gameCount = User.findAll({
+    attributes: ['User', 'Game', [sequelize.fn('COUNT', sequelize.col('user.gameId')), 'UserGame']],
+    include: [
+      {
+        model: User,
+        attributes: [],
+        include: []
+      }
+    ],
+  })
+    response.json(gameCount);
+  });
+
+
 app.get('/api/teams', async (request, response) => {
   const teams = await Team.findAll();
   response.json(teams)

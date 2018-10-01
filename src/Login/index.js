@@ -64,7 +64,6 @@ class Login extends Component {
           <form onSubmit={this.login}>
             <div className="logo-login">
               <Link to='/'>
-
                 <img className="star" src="../images/fan_star_logo1.png" />
                 <h1 className="fanstar-login"><span className="font-span">F</span>an <span className="font-span">S</span>tar</h1>
               </Link>
@@ -81,6 +80,5 @@ class Login extends Component {
     )
   }
 }
-
 
 export default Login;

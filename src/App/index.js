@@ -8,7 +8,6 @@ import Login from "../Login";
 import GameList from "../GameList";
 import PrivateRoute from "../PrivateRoute";
 
-
 class App extends Component {
   constructor(props) {
     super(props);

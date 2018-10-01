@@ -1,8 +1,5 @@
 import React, { Component } from "react";
-import { BrowserRouter as Router, Link, Route, Redirect } from 'react-router-dom';
 import Game from "../Game";
-import GameList from "../GameList"
-
 
 class GamesAttended extends Component {
   constructor(props) {

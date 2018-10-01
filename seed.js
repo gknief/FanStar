@@ -1,4 +1,3 @@
-// Require model file here
 const csvTeamPath = './public/data/teams.csv'
 const csvGamePath = './public/data/game.csv'
 const csvUserPath = './public/data/user.csv'
@@ -9,12 +8,6 @@ const main = async () => {
   const jsonArrayTeams = await csv().fromFile(csvTeamPath);
   const jsonArrayGame = await csv().fromFile(csvGamePath);
   const jsonArrayUser = await csv().fromFile(csvUserPath);
-
-  // console.log(jsonArrayTeams);
-  // console.log(jsonArrayGame);
-  // console.log(jsonArrayTeams.length);
-  // console.log(jsonArrayGame.length);
-  // console.log(jsonArrayUser.length);
 
   for (let i = 0; i < jsonArrayTeams.length; i++) {
     var Teams = await Team.create({
@@ -47,11 +40,7 @@ const main = async () => {
     });
     await Users.addGame(Games);
   }
-
-      
-
   process.exit();
 }
-
 
 main();

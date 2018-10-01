@@ -38,8 +38,8 @@ Game.belongsToMany(User, { through: UserGame });
 Team.belongsToMany(Game, { through: GameTeam });
 Game.belongsToMany(Team, { through: GameTeam });
 
-// User.hasOne(Team);
-// Team.belongsToMany(User);
+User.belongsTo(Team);
+Team.hasMany(User);
 
 module.exports = {
   User,

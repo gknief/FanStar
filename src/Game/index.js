@@ -9,7 +9,6 @@ class Game extends Component {
     }
   }
 
-
   gameClick = () => {
     this.setState({
       gameAttended: true
@@ -23,9 +22,6 @@ class Game extends Component {
         <div>{this.props.homeTeam} vs. {this.props.awayTeam}</div>
         <div>Location: {this.props.location}</div>
         <div>Date: {this.props.date}</div>
-        {/* <div>
-          <button className = "add-game-button" onClick={this.props.onClick}>Add Game</button>
-        </div> */}
       </div>
     );
   }

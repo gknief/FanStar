@@ -1,47 +1,45 @@
 import React, { Component } from "react";
 import { BrowserRouter as Router, Link, Route } from 'react-router-dom';
-import GameList from "../GameList";
-import Game from "../Game";
 import GamesAttended from "../GamesAttended"
 import "./style.css";
 
 class Profile extends Component {
-    constructor(props) {
-        super(props)
+  constructor(props) {
+    super(props)
 
-        this.state = {
-            user: '',
-            games: 0,
-            rank: 0,
-            gameList: []
-        }
+    this.state = {
+      user: '',
+      games: 0,
+      rank: 0,
+      gameList: []
     }
+  }
 
-    componentDidMount = async () => {
-        await this.fetchUser();
-        this.fetchGames();
-    }
+  componentDidMount = async () => {
+    await this.fetchUser();
+    this.fetchGames();
+  }
 
-    fetchUser = async () => {
-        const response = await fetch('/api/current-user', {
-            headers: {
-                'jwt-token': localStorage.getItem('user_jwt')
-            }
-        });
-        const user = await response.json();
-        this.setState({
-            user: user
-        });
-    }
-
-    fetchGames = async () => {
-        const response = await fetch(`/api/${this.state.user.userId}/userGames`);
-        const gameList = await response.json();
-    
-        this.setState({
-          gameList: gameList,
-        })
+  fetchUser = async () => {
+    const response = await fetch('/api/current-user', {
+      headers: {
+        'jwt-token': localStorage.getItem('user_jwt')
       }
+    });
+    const user = await response.json();
+    this.setState({
+      user: user
+    });
+  }
+
+  fetchGames = async () => {
+    const response = await fetch(`/api/${this.state.user.userId}/userGames`);
+    const gameList = await response.json();
+
+    this.setState({
+      gameList: gameList,
+    })
+  }
 
   onInputChange = e => {
     this.setState({
@@ -50,7 +48,7 @@ class Profile extends Component {
   }
 
   logout = () => {
-      localStorage.clear();
+    localStorage.clear();
   }
 
   render() {
@@ -64,10 +62,8 @@ class Profile extends Component {
         <div><Link to="./gamelist"><button className="add-game-button">Add new game:</button></Link> </div>
         <div>Number of games attended: {this.state.gameList.length}</div>
         <div>Games I've attended:</div>
-        <GamesAttended/>
+        <GamesAttended />
       </div>
-
-
     );
   }
 }

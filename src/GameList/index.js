@@ -3,7 +3,6 @@ import { BrowserRouter as Router, Link, Route, Redirect } from 'react-router-dom
 import Game from "../Game";
 import "./style.css";
 
-
 class GameList extends Component {
   constructor(props) {
     super(props)
@@ -15,20 +14,18 @@ class GameList extends Component {
     }
   }
 
-
   componentDidMount = async () => {
     await this.fetchUser();
     this.fetchGames();
-    
   }
 
   fetchGames = async () => {
     const response = await fetch(`/api/${this.state.user.favoriteTeam}/games`)
     console.log(this.state.user.favoriteTeam);
-    
+
     const gameList = await response.json();
     console.log(gameList);
-    
+
     this.setState({
       gameList: gameList,
     })
@@ -59,33 +56,33 @@ class GameList extends Component {
     });
   }
 
-    render() {
-      if (this.state.addEvent) {
-        const { from } = this.props.location.state || { from: { pathname: "/profile" } };
-        return (
-          <Redirect to={from} />
-        )
-      }
+  render() {
+    if (this.state.addEvent) {
+      const { from } = this.props.location.state || { from: { pathname: "/profile" } };
       return (
-        <div className="GameList">
-          <h1 className="game-list-section">GAMES</h1>
-          <h2>Click On Game Below To Add</h2>
-          {this.state.gameList.map(game => {
-            return (
-              <Game
-                key={game.id}
-                date={game.date}
-                time={game.time}
-                location={game.location}
-                awayTeam={game.awayTeam}
-                homeTeam={game.homeTeam}
-                onClick={() => this.addGames(game.id)}
-              />
-            );
-          })}
-        </div>
-      );
+        <Redirect to={from} />
+      )
     }
+    return (
+      <div className="GameList">
+        <h1 className="game-list-section">GAMES</h1>
+        <h2>Click On Game Below To Add</h2>
+        {this.state.gameList.map(game => {
+          return (
+            <Game
+              key={game.id}
+              date={game.date}
+              time={game.time}
+              location={game.location}
+              awayTeam={game.awayTeam}
+              homeTeam={game.homeTeam}
+              onClick={() => this.addGames(game.id)}
+            />
+          );
+        })}
+      </div>
+    );
   }
+}
 
-  export default GameList;
+export default GameList;

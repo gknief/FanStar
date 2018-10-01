@@ -54,6 +54,30 @@ app.post('/api/register', async (request, response) => {
   });
 });
 
+app.put('/api/register', async (request, response) => {
+  const { email, firstName, lastName, favoriteTeam } = request.body;
+  if (!email) {
+    response.status(400).json({
+      error: "Please Provide an Email and Password"
+    });
+    return;
+  }
+
+
+  const user = await User.update({
+    firstName: firstName,
+    lastName: lastName,
+    favoriteTeam: favoriteTeam,
+    email: email,
+
+  });
+
+  const token = jwt.sign({ userId: user.id }, jwtSecret);
+  response.json({
+    token: token
+  });
+});
+
 // GAMESLIST START
 
 
@@ -585,6 +609,46 @@ app.get('/api/current-user', async (request, response) => {
     email: user.email,
   })
 });
+
+app.get('/api/favoriteTeam', async (request, response) => {
+  const token = request.headers['jwt-token'];
+  const verify = await jwt.verify(token, jwtSecret);
+  const favoriteTeam = verify.favoriteTeam;
+
+  console.log(verify);
+  const sequelizeOptions = {
+    where: {
+      $or: [
+        { homeTeam: favoriteTeam },
+        { awayTeam: favoriteTeam }
+      ]
+    },
+    order: [
+      ['date', 'ASC']
+    ]
+  }
+
+  if (request.query.userId) {
+    sequelizeOptions.include = {
+      model: User,
+      where: {
+        favoriteTeam: verify.favoriteTeam
+      },
+      attributes: []
+    }
+  };
+  const game = await Game.findAll({ sequelizeOptions });
+  response.json(game);
+  console.log('hello');
+  
+});
+
+app.get('/api/games', async (request, response) => {
+  const games = await Game.findAll({});
+  response.json(games);
+})
+
+
 
 
 

@@ -43,7 +43,7 @@ const main = async () => {
       lastName: jsonArrayUser[i].Last_Name,
       favoriteTeam: jsonArrayUser[i].Favorite_Team,
       email: jsonArrayUser[i].Email,
-      // passwordDigest: jsonArrayUser[i].Password,
+      // passwordDigest: jsonArrayUser[i].Password, 
     });
     await Users.addGame(Games);
   }

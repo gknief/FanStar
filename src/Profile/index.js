@@ -93,6 +93,9 @@ class Profile extends Component {
     })
   }
 
+  logout = () => {
+      localStorage.clear();
+  }
 
   renderForm() {
     return (
@@ -153,6 +156,7 @@ class Profile extends Component {
   renderDisplay() {
     return (
       <div className="Profile">
+        <Link to="/"><button className="logout" onClick={this.logout}>Log Out</button></Link>
         <button onClick={this.edit} className="edit">Edit</button>
         <div>Name: {this.state.user.firstName} {this.state.user.lastName}</div>
         <div>Email: {this.state.user.email}</div>

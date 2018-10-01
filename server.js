@@ -78,6 +78,22 @@ app.put('/api/register', async (request, response) => {
   });
 });
 
+app.get('/api/:favoriteTeam/games', async (request, response) => {
+  const favoriteTeam = request.params.favoriteTeam
+  const favoriteTeamGames = await Game.findAll({
+    where: {
+      $or: [
+        { homeTeam: favoriteTeam },
+        { awayTeam: favoriteTeam }
+      ]
+    },
+    order: [
+      ['date', 'ASC']
+    ]
+  });
+  response.json(favoriteTeamGames);
+})
+
 // GAMESLIST START
 
 

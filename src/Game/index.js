@@ -19,13 +19,13 @@ class Game extends Component {
 
   render() {
     return (
-      <div className="Game">
+      <div className="Game" onClick={this.props.onClick}>
         <div>{this.props.homeTeam} vs. {this.props.awayTeam}</div>
         <div>Location: {this.props.location}</div>
         <div>Date: {this.props.date}</div>
-        <div>
+        {/* <div>
           <button className = "add-game-button" onClick={this.props.onClick}>Add Game</button>
-        </div>
+        </div> */}
       </div>
     );
   }

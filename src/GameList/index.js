@@ -4,16 +4,23 @@ import Game from "../Game";
 
 
 class GameList extends Component {
-    constructor(props) {
-        super(props)
+  constructor(props) {
+    super(props)
 
+<<<<<<< HEAD
         this.state = {
           user: {},
           favoriteTeam: '',
           games: []
         }
+=======
+    this.state = {
+      gameList: [],
+>>>>>>> 64b87091add64642ddc8c80ee94887c51e1f932f
     }
+  }
 
+<<<<<<< HEAD
     componentDidMount = () => {
       this.fetchUser();
       this.fetchGames();
@@ -72,6 +79,39 @@ class GameList extends Component {
           </div>
         );
     }
+=======
+  componentDidMount = async () => {
+    this.fetchGames();
+  }
+
+  fetchGames = async () => {
+    const response = await fetch('/api/games')
+    const gameList = await response.json();
+    this.setState({
+      gameList: gameList
+    })
+  }
+
+  render() {
+    return (
+      <div className="GameList">
+        <h1 className="game-list-section">GAMES</h1>
+        {this.state.gameList.map(game => {
+          return (
+            <Game
+              key={game.id}
+              date={game.date}
+              time={game.time}
+              location={game.location}
+              awayTeam={game.awayTeam}
+              homeTeam={game.homeTeam}
+            />
+          );
+        })}
+      </div>
+    );
+  }
+>>>>>>> 64b87091add64642ddc8c80ee94887c51e1f932f
 }
 
 export default GameList;

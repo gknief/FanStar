@@ -69,6 +69,7 @@ class GameList extends Component {
       return (
         <div className="GameList">
           <h1 className="game-list-section">GAMES</h1>
+          <h2>Click On Game Below To Add</h2>
           {this.state.gameList.map(game => {
             return (
               <Game

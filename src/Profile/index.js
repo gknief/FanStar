@@ -55,7 +55,7 @@ class Profile extends Component {
 
   render() {
     return (
-      <div className="Profile">
+      <div className="profile-container">
         <Link to="/"><button className="logout" onClick={this.logout}>Log Out</button></Link>
         <div>Name: {this.state.user.firstName} {this.state.user.lastName}</div>
         <div>Email: {this.state.user.email}</div>

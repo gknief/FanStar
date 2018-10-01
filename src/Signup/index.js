@@ -84,16 +84,15 @@ class Signup extends Component {
                 <form onSubmit={this.register}>
                 <div className="logo-login">
               <Link to='/'>
-
                 <img className="star" src="../images/fan_star_logo1.png" />
-                <h1 className="fanstar-login"><span className="font-span">F</span>an <span className="font-span">S</span>tar</h1>
               </Link>
+                <h1 className="fanstar-login"><span className="font-span">F</span>an <span className="font-span">S</span>tar</h1>
             </div>
-            <div className="input-container">
-                    <input type="text" value={this.state.firstName} placeholder="First Name" onChange={this.onInputChange} name="firstName" />
-                    <input type="text" value={this.state.lastName} placeholder="Last Name" onChange={this.onInputChange} name="lastName" />
-                    <input type="text" value={this.state.email} placeholder="Email" onChange={this.onInputChange} name="email" />
-                    <input type="text" value={this.state.password} placeholder="Password" onChange={this.onInputChange} name="password" />
+            <div className="signup-input-container">
+                    <input className="registration-input" type="text" value={this.state.firstName} placeholder="First Name" onChange={this.onInputChange} name="firstName" />
+                    <input className="registration-input" type="text" value={this.state.lastName} placeholder="Last Name" onChange={this.onInputChange} name="lastName" />
+                    <input className="registration-input" type="text" value={this.state.email} placeholder="Email" onChange={this.onInputChange} name="email" />
+                    <input className="registration-input" type="text" value={this.state.password} placeholder="Password" onChange={this.onInputChange} name="password" />
                     <select name="favoriteTeam" onChange={this.onInputChange}>
                         <optgroup label="Atlantic Division">
                             <option>Boston Bruins</option>

@@ -54,6 +54,30 @@ app.post('/api/register', async (request, response) => {
   });
 });
 
+app.put('/api/register', async (request, response) => {
+  const { email, firstName, lastName, favoriteTeam } = request.body;
+  if (!email) {
+    response.status(400).json({
+      error: "Please Provide an Email and Password"
+    });
+    return;
+  }
+
+
+  const user = await User.update({
+    firstName: firstName,
+    lastName: lastName,
+    favoriteTeam: favoriteTeam,
+    email: email,
+
+  });
+
+  const token = jwt.sign({ userId: user.id }, jwtSecret);
+  response.json({
+    token: token
+  });
+});
+
 // GAMESLIST START
 
 

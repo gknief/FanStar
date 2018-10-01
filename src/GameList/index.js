@@ -44,9 +44,8 @@ class GameList extends Component {
   }
 
   addGames = async id => {
-    await fetch('/api/current-user', {
-      method: 'PUT',
-      body: JSON.stringify({gameId: id}),
+    await fetch(`/api/${id}/userGames`, {
+      method: 'POST',
       headers: {
         'Content-Type': 'application/json',
         'jwt-token': localStorage.getItem('user_jwt')
@@ -69,8 +68,7 @@ class GameList extends Component {
                 location={game.location}
                 awayTeam={game.awayTeam}
                 homeTeam={game.homeTeam}
-                addGame={this.state.user.gameId === game.id}
-                onClickFavoriteButton={() => this.addGames(game.id)}
+                onClick={() => this.addGames(game.id)}
               />
             );
           })}

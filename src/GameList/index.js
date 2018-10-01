@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { BrowserRouter as Router, Link, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Link, Route, Redirect } from 'react-router-dom';
 import Game from "../Game";
 import "./style.css";
 
@@ -10,7 +10,8 @@ class GameList extends Component {
 
     this.state = {
       gameList: [],
-      user: {}
+      user: {},
+      addEvent: false,
     }
   }
 
@@ -44,6 +45,9 @@ class GameList extends Component {
   }
 
   addGames = async id => {
+    this.setState({
+      addEvent: true
+    })
     await fetch(`/api/${id}/userGames`, {
       method: 'POST',
       headers: {
@@ -51,11 +55,17 @@ class GameList extends Component {
         'jwt-token': localStorage.getItem('user_jwt')
       }
     });
-    this.fetchUser();
+    // this.fetchUser();
   }
 
 
     render() {
+      if (this.state.addEvent) {
+        const { from } = this.props.location.state || { from: { pathname: "/profile" } };
+        return (
+          <Redirect to={from} />
+        )
+      }
       return (
         <div className="GameList">
           <h1 className="game-list-section">GAMES</h1>

@@ -9,6 +9,8 @@ const jwtSecret = 'shh1234';
 
 const app = express();
 
+app.use("/", express.static("./build/"));
+
 app.use(bodyParser.json());
 
 app.get('/api/users', async (request, response) => {

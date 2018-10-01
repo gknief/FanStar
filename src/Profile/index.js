@@ -12,19 +12,12 @@ class Profile extends Component {
         this.state = {
             user: '',
             games: 0,
-            rank: 0,
-            editProfile: false
+            rank: 0
         }
     }
 
     componentDidMount = () => {
         this.fetchUser();
-        let textArea;
-        if (this.state.editProfile) {
-            textArea = this.newText
-            textArea.focus()
-            textArea.select()
-        }
     }
 
     fetchUser = async () => {
@@ -40,55 +33,6 @@ class Profile extends Component {
         console.log(this.state.user);
     }
 
-    edit = () => {
-        this.setState({
-            editProfile: true,
-        })
-    }
-
-    save = async (e) => {
-        e.preventDefault();
-
-        const emailRegex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
-        const requestBody = JSON.stringify({
-            firstName: this.state.firstName,
-            lastName: this.state.lastName,
-            email: this.state.email,
-            favoriteTeam: this.state.favoriteTeam,
-            password: this.state.password
-        })
-
-        if (this.state.firstName === '') {
-            alert('Please Provde Your First Name');
-        } else if
-        (this.state.lastName === '') {
-            alert('Please Provde Your Last Name');
-        } else if
-        (!emailRegex.test(this.state.email)) {
-            alert('Please Provide Valid Email Address');
-        } else {
-
-            const response = await fetch('api/update', {
-                method: 'PUT',
-                body: requestBody,
-                headers: {
-                    'Content-Type': 'application/json'
-                }
-            });
-            const responseBody = await response.json();
-            if (response.status === 409) {
-                this.setState({
-                    errorMessage: responseBody.message
-                });
-                return;
-            }
-            localStorage.setItem('user_jwt', JSON.stringify(responseBody.token));
-            this.setState({
-                isRegistered: false
-            })
-        }
-    }
-
   onInputChange = e => {
     this.setState({
       [e.target.name]: e.target.value
@@ -99,67 +43,10 @@ class Profile extends Component {
       localStorage.clear();
   }
 
-  renderForm() {
-    return (
-      <div className="Profile">
-        <form onSubmit={this.save}>
-          <input type="text" value={this.state.user.firstName} placeholder="First Name" onChange={this.onInputChange} name="firstName" />
-          <input type="text" value={this.state.user.lastName} placeholder="Last Name" onChange={this.onInputChange} name="lastName" />
-          <select name="favoriteTeam" onChange={this.onInputChange}>
-            <optgroup label="Atlantic Division">
-              <option>Boston Bruins</option>
-              <option>Buffalo Sabres</option>
-              <option>Detroit Red Wings</option>
-              <option>Florida Panthers</option>
-              <option>Montreal Canadiens</option>
-              <option>Ottawa Senators</option>
-              <option>Tampa Bay Lightning</option>
-              <option>Toronto Maple Leafs</option>
-            </optgroup>
-            <optgroup label="Metropolitan Division">
-              <option>Carolina Hurricanes</option>
-              <option>Columbus Blue Jackets</option>
-              <option>New Jersey Devils</option>
-              <option>New York Islanders</option>
-              <option>New York Rangers</option>
-              <option>Philadelphia Flyers</option>
-              <option>Pittsburgh Penguins</option>
-              <option>Washington Capitals</option>
-            </optgroup>
-            <optgroup label="Central Division">
-              <option>Chicago Blackhawks</option>
-              <option>Colorado Avalanche</option>
-              <option>Dallas Stars</option>
-              <option>Minnesota Wild</option>
-              <option>Nashville Predators</option>
-              <option>St. Louis Blues</option>
-              <option>Winnipeg Jets</option>
-            </optgroup>
-            <optgroup label="Pacific Division">
-              <option >Anaheim Ducks</option>
-              <option>Arizona Coyotes</option>
-              <option>Calgary Flames</option>
-              <option>Edmonton Oilers</option>
-              <option>Los Angeles Kings</option>
-              <option>San Jose Sharks</option>
-              <option>Vancouver Canucks</option>
-              <option>Vegas Golden Knights</option>
-            </optgroup>
-          </select>
-          <input type="text" value={this.state.user.email} placeholder="Email" onChange={this.onInputChange} name="email" />
-          <button type="button" onClick={this.save}>Save</button>
-        </form>
-        <div>{this.state.errorMessage}</div>
-      </div>
-
-    );
-  }
-
-  renderDisplay() {
+  render() {
     return (
       <div className="Profile">
         <Link to="/"><button className="logout" onClick={this.logout}>Log Out</button></Link>
-        <button onClick={this.edit} className="edit">Edit</button>
         <div>Name: {this.state.user.firstName} {this.state.user.lastName}</div>
         <div>Email: {this.state.user.email}</div>
         <div>Fan rank: {this.state.rank}</div>
@@ -172,10 +59,6 @@ class Profile extends Component {
 
 
     );
-  }
-
-  render() {
-    return this.state.editProfile ? this.renderForm() : this.renderDisplay();
   }
 }
 

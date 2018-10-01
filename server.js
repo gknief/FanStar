@@ -126,8 +126,6 @@ app.post('/api/:id/userGames', async (request, response) => {
 app.get('/api/:id/userGames', async (request, response) => {
   const userId = request.params.id
   const sequelizeOptions = {};
-  const token = request.headers['jwt-token'];
-  const verify = await jwt.verify(token, jwtSecret);
   
   sequelizeOptions.include = {
     model: User,

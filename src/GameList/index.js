@@ -16,7 +16,7 @@ class GameList extends Component {
         return (
         <div className="GameList">
             <h1 className="game-list-section">GAMES</h1>
-            {this.props.games.map(game => {
+            {/* {this.props.games.map(game => {
               return (
                 <Game 
                 date={game.date}
@@ -27,7 +27,7 @@ class GameList extends Component {
                 gameClick={this.gameClick}
                 />
               );
-            })}
+            })} */}
           </div>
         );
     }

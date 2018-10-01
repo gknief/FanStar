@@ -9,34 +9,86 @@ class GamesAttended extends Component {
     super(props)
 
     this.state = {
+      user: '', 
       gameList: [],
       addGame: {},
     }
   }
 
-  addGame = (gameId) => {
-    const currentGame = this.state.gameList.filter(game => game.id === gameId)[0];
+  componentDidMount = async () => {
+    await this.fetchUser();
+    this.fetchGames();
+    console.log('123')
+
+  }
+
+  fetchGames = async () => {
+    const response = await fetch(`/api/${this.state.user.userId}/userGames`)
+    console.log('hello');
+
+    const gameList = await response.json();
+    console.log(gameList);
+
     this.setState({
-      currentGame
+      gameList: gameList,
+    })
+  }
+
+  fetchUser = async () => {
+    const response = await fetch('/api/current-user', {
+      headers: {
+        'jwt-token': localStorage.getItem('user_jwt')
+      }
+    });
+    const user = await response.json();
+    this.setState({
+      user: user
     });
   }
 
+  // addGames = async id => {
+  //   this.setState({
+  //     addEvent: true
+  //   })
+  //   await fetch(`/api/${id}/userGames`, {
+  //     method: 'POST',
+  //     headers: {
+  //       'Content-Type': 'application/json',
+  //       'jwt-token': localStorage.getItem('user_jwt')
+  //     }
+  //   });
+  // }
+
+
   render() {
     return (
-      <div className="game-library">
-        {/* <GameList games={this.state.currentGame} currentGame={this.state.currentGame} setCurrentGame={this.setCurrentGame} /> */}
-        {/* <GameDetails game={this.state.currentGame} /> */}
+      <div className="GameList">
+        <h1 className="game-list-section">GAMES</h1>
+        {this.state.gameList.map(game => {
+          return (
+            <Game
+              key={game.id}
+              date={game.date}
+              time={game.time}
+              location={game.location}
+              awayTeam={game.awayTeam}
+              homeTeam={game.homeTeam}
+              // onClick={() => this.addGames(game.id)}
+            />
+          );
+        })}
       </div>
     );
   }
 }
+    
 
 // GameListItem = (props) => {
 //   const setCurrentGame = () => {
 //     props.setCurrentGame(props.id);
 //   }
 
-  // const selectedClass = props.currentGame.id === props.id ? 'game-list-item--selected' : '';
+// const selectedClass = props.currentGame.id === props.id ? 'game-list-item--selected' : '';
 
 //   return (
 //     <div className={`game-list-item ${selectedClass}`} onClick={setCurrentGame}>

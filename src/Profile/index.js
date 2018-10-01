@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { BrowserRouter as Router, Link, Route } from 'react-router-dom';
 import GameList from "../GameList";
 import Game from "../Game";
+import GamesAttended from "../GamesAttended"
 import "./style.css";
 
 class Profile extends Component {
@@ -165,6 +166,7 @@ class Profile extends Component {
         <div><Link to="./gamelist"><button className="add-game-button">Add new game:</button></Link> </div>
         <div>Number of games attended: {this.state.games}</div>
         <div>Games I've attended:{}</div>
+        <GamesAttended/>
       </div>
 
 

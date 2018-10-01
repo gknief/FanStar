@@ -94,6 +94,18 @@ app.get('/api/:favoriteTeam/games', async (request, response) => {
   response.json(favoriteTeamGames);
 })
 
+app.post('/api/:id/userGames', async (request, response) => {
+  const gameId = request.params.id
+  const token = request.headers['jwt-token'];
+  const verify = await jwt.verify(token, jwtSecret);
+  
+  const userGame = await UserGame.create({
+    userId: verify.userId,
+    gameId: gameId,
+  });
+  response.json(userGame);
+});
+
 app.get('/api/teams', async (request, response) => {
   const teams = await Team.findAll();
   response.json(teams)
@@ -179,7 +191,7 @@ app.get('/api/favoriteTeam', async (request, response) => {
   const game = await Game.findAll({ sequelizeOptions });
   response.json(game);
   console.log('hello');
-  
+
 });
 
 app.get('/api/games', async (request, response) => {

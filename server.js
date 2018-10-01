@@ -568,26 +568,7 @@ app.post('/api/login', async (request, response) => {
   }
 });
 
-// app.get('/api/current-user', async (request, response) => {
-//   const token = request.headers['jwt-token'];
-//   const verify = await jwt.verify(token, jwtSecret);
-
-//   const user = await User.findOne({
-//     where: {
-//       id: verify.userId
-//     }
-//   });
-//   response.json({
-//     userId: user.id,
-//     firstName: user.firstName,
-//     lastName: user.lastName,
-//     favoriteTeam: user.favoriteTeam,
-//     email: user.email,
-//   })
-// });
-
 app.get('/api/current-user', async (request, response) => {
-  const { gameId } = request.body;
   const token = request.headers['jwt-token'];
   const verify = await jwt.verify(token, jwtSecret);
 
@@ -596,9 +577,6 @@ app.get('/api/current-user', async (request, response) => {
       id: verify.userId
     }
   });
-  user.gameId = gameId;
-  // await user.save();
-  // response.sendStatus(200);
   response.json({
     userId: user.id,
     firstName: user.firstName,
@@ -606,6 +584,37 @@ app.get('/api/current-user', async (request, response) => {
     favoriteTeam: user.favoriteTeam,
     email: user.email,
   })
+});
+
+app.get('/api/favoriteTeam', async (request, response) => {
+  const token = request.headers['jwt-token'];
+  const verify = await jwt.verify(token, jwtSecret);
+  const favoriteTeam = verify.favoriteTeam;
+
+  console.log(verify);
+  const sequelizeOptions = {
+    where: {
+      $or: [
+        { homeTeam: favoriteTeam },
+        { awayTeam: favoriteTeam }
+      ]
+    },
+    order: [
+      ['date', 'ASC']
+    ]
+  }
+
+  if (request.query.userId) {
+    sequelizeOptions.include = {
+      model: User,
+      where: {
+        favoriteTeam: verify.favoriteTeam
+      },
+      attributes: []
+    }
+  };
+  const game = await Game.findAll({ sequelizeOptions });
+  response.json(game);
 });
 
 app.get('/api/games', async (request, response) => {

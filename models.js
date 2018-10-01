@@ -10,7 +10,7 @@ const User = sequelize.define('user', {
   lastName: Sequelize.TEXT,
   favoriteTeam: Sequelize.TEXT,
   email: Sequelize.TEXT,
-  passwordDigest: { type: Sequelize.STRING, unique: true }
+  passwordDigest: Sequelize.STRING
 });
 
 const Game = sequelize.define('game', {
@@ -37,6 +37,9 @@ User.belongsToMany(Game, { through: UserGame });
 Game.belongsToMany(User, { through: UserGame });
 Team.belongsToMany(Game, { through: GameTeam });
 Game.belongsToMany(Team, { through: GameTeam });
+
+// User.hasOne(Team);
+// Team.belongsToMany(User);
 
 module.exports = {
   User,

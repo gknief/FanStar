@@ -106,7 +106,6 @@ app.post('/api/:id/userGames', async (request, response) => {
   response.json(userGame);
 });
 
-
 app.get('/api/teams', async (request, response) => {
   const teams = await Team.findAll();
   response.json(teams)

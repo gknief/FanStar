@@ -57,7 +57,7 @@ class Signup extends Component {
                 });
                 return;
             }
-            localStorage.setItem('user_jwt', JSON.stringify(responseBody.token));
+            localStorage.setItem('user_jwt', responseBody.token);
             this.setState({
                 isRegistered: true
             })

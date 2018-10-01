@@ -1,37 +1,33 @@
 import React, { Component } from "react";
 
 class Game extends Component {
-    constructor(props) {
-        super(props)
+  constructor(props) {
+    super(props)
 
-        this.state = {
-            team1: '',
-            team2: '',
-            date: '',
-            location: '',
-            gameAttended: false
-        }
+    this.state = {
+      gameAttended: false
     }
+  }
 
-    gameClick = () => {
-        this.setState({
-            gameAttended: true
-        })
-        return;
-    }
+  gameClick = () => {
+    this.setState({
+      gameAttended: true
+    })
+    return;
+  }
 
-    render() {
-        return (
-        <div className="Game">
-        <div>{this.state.team1} vs. {this.state.team2}</div> 
-        <div>Location: {this.state.location}</div>
-        <div>Date: {this.state.date}</div>
+  render() {
+    return (
+      <div className="Game">
+        <div>{this.props.homeTeam} vs. {this.props.awayTeam}</div>
+        <div>Location: {this.props.location}</div>
+        <div>Date: {this.props.date}</div>
         <div>
-            <button onClick={this.state.gameClick}></button>
+          <button onClick={this.state.gameClick}></button>
         </div>
-        </div>
-        );
-    }
+      </div>
+    );
+  }
 }
 
 export default Game;

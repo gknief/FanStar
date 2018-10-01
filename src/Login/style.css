@@ -17,7 +17,7 @@
 
 body {
     margin: 0 auto;
-    font-family: 'Julius Sans One', sans-serif;
+    font-family: 'Montserrat', sans-serif;
 }
 
 .login-container {
@@ -71,7 +71,7 @@ form {
 .input-container input {
     width: 200px;
     height: 15px;
-    font-family: 'Julius Sans One', sans-serif;
+    
     font-weight: 600;
 }
 
@@ -83,8 +83,8 @@ form {
     cursor: pointer;
     position: relative;
     top: 10px;
-    font-family: 'Julius Sans One', sans-serif;
     font-weight: 100;
+    text-transform: uppercase;
 }
 
 .input-container button:hover {
@@ -94,7 +94,6 @@ form {
     cursor: pointer;
     font-weight: 600;
 }
-
 
 .font-span {
     font-family: 'Faster One', cursive;

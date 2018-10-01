@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { BrowserRouter as Router, Link, Route } from 'react-router-dom';
 import Game from "../Game";
+import "./style.css";
 
 
 class GameList extends Component {
@@ -12,6 +13,7 @@ class GameList extends Component {
       user: {}
     }
   }
+
 
   componentDidMount = async () => {
     await this.fetchUser();

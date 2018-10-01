@@ -7,7 +7,7 @@ import './style.css';
 export default class Home extends Component {
     render() {
         return (
-
+            
                 <div className="home-container">
                     {/* <nav className="home-nav">
                         <Link to="/signup">Sign Up</Link>
@@ -15,20 +15,20 @@ export default class Home extends Component {
                         <Link to="/login">Log In</Link>
                         
                     </nav> */}
-                    <div className="logo">
+                  
                         {/* <Link to='/'> */}
 
                             <img className="logo" src="../images/fan_star_logo1.png" />
                             <h1 className="fanstar"><span className="f-in-fanstar">F</span>an <span className="f-in-fanstar">S</span>tar</h1>
                             {/* </Link> */}
-                    </div>
+                   
                     <h1>The Most Valuable Fans</h1>
                     <div className="home-buttons">
                         <button className='login-button'><Link to='/login'>Log In</Link></button> <br></br><br></br>
                         <button className='signup-button'><Link to='/signup'>Sign Up</Link></button>
                     </div>
                 </div>
-        
+                
 
                 )
             }

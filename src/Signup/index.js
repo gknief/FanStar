@@ -136,7 +136,7 @@ class Signup extends Component {
                         </optgroup>
                     </select>
                     <br></br>
-                    <button type="button" onClick={this.register} className="signup-button">Sign Up</button>
+                    <button type="button" onClick={this.register} className="register-button">Sign Up</button>
                     <div>{this.state.errorMessage}</div>
                     </div>
                 </form>

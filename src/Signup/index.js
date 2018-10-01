@@ -125,7 +125,6 @@ class Signup extends Component {
                     </select>
                     <input type="text" value={this.state.email} placeholder="Email" onChange={this.onInputChange} name="email" />
                     <input type="text" value={this.state.password} placeholder="Password" onChange={this.onInputChange} name="password" />
-                    {/* <button type="button" onClick={this.register}>Sign Up</button> */}
                     <input type="submit" onClick={this.register} value="Sign Up" />
                 </form>
                 <div>{this.state.errorMessage}</div>

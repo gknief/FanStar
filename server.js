@@ -54,29 +54,43 @@ app.post('/api/register', async (request, response) => {
   });
 });
 
-app.put('/api/register', async (request, response) => {
-  const { email, firstName, lastName, favoriteTeam } = request.body;
-  if (!email) {
-    response.status(400).json({
-      error: "Please Provide an Email and Password"
-    });
-    return;
-  }
+// app.put('/api/update', async (request, response) => {
+//   const { email, password, firstName, lastName, favoriteTeam } = request.body;
+//   if (!email || !password) {
+//     response.status(400).json({
+//       error: "Please Provide an Email and Password"
+//     });
+//     return;
+//   }
 
+//   const existingUser = await User.findOne({
+//     where: {
+//       email: email
+//     }
+//   });
 
-  const user = await User.update({
-    firstName: firstName,
-    lastName: lastName,
-    favoriteTeam: favoriteTeam,
-    email: email,
+//   if (existingUser) {
+//     response.status(409).json({
+//       message: "That email is already registered."
+//     })
+//     return;
+//   }
 
-  });
+//   const passwordDigest = await bcrypt.hash(password, 12);
 
-  const token = jwt.sign({ userId: user.id }, jwtSecret);
-  response.json({
-    token: token
-  });
-});
+//   const user = await User.({
+//     firstName: firstName,
+//     lastName: lastName,
+//     favoriteTeam: favoriteTeam,
+//     email: email,
+//     passwordDigest: passwordDigest
+//   });
+
+//   const token = jwt.sign({ userId: user.id }, jwtSecret);
+//   response.json({
+//     token: token
+//   });
+// });
 
 app.get('/api/:favoriteTeam/games', async (request, response) => {
   const favoriteTeam = request.params.favoriteTeam

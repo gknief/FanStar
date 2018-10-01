@@ -15,7 +15,8 @@ class Signup extends Component {
         }
     }
 
-    register = async () => {
+    register = async e => {
+        e.preventDefault();
         const emailRegex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
         const passwordRegex = /^(?=.*[0-9])(?=.*[!@#\$%\^&\*])/
         const requestBody = JSON.stringify({
@@ -124,7 +125,8 @@ class Signup extends Component {
                     </select>
                     <input type="text" value={this.state.email} placeholder="Email" onChange={this.onInputChange} name="email" />
                     <input type="text" value={this.state.password} placeholder="Password" onChange={this.onInputChange} name="password" />
-                    <button type="button" onClick={this.register}>Sign Up</button>
+                    {/* <button type="button" onClick={this.register}>Sign Up</button> */}
+                    <input type="submit" onClick={this.register} value="Sign Up" />
                 </form>
                 <div>{this.state.errorMessage}</div>
             </div>

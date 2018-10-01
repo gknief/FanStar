@@ -1,0 +1,118 @@
+@keyframes fade-screen-in {
+  0% {
+      opacity: 0;
+      background-color: red;
+  }
+  
+  50% {
+      opacity: 0.15;
+      background-color: red;
+  }
+
+  100% {
+      opacity: 0.3;
+      background-color: red;
+  }
+}
+
+body {
+  margin: 0 auto;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.Signup {
+  width: 100%;
+  height: 100%;
+  background-image: url('http://latinalista.com/wp-content/uploads/2016/04/Super_Bowl_XLIII_-_Thunderbirds_Flyover_-_Feb_1_2009.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+}
+
+.registration-form {
+  width: 100%;
+  height: 500px;
+}
+
+.star {
+  width: 90px;
+}
+
+form {
+  width: 300px;
+  height: 300px;
+  border: 5px solid white;
+  margin: 0 auto;
+  margin-top: 100px;
+  background-color: rgba(255,0,0,.3);
+  animation: fade-screen-in 2s ease-in;
+}
+
+.fanstar-login {
+  font-family: 'Lalezar', cursive;
+  color: white;
+  font-size: 40px;
+  text-align: center;
+  margin-left: 90px;
+  padding: 0;
+  position: relative;
+  top: -105px;
+}
+
+.input-container {
+  margin-top: -15px;
+  text-align: center;
+  position: relative;
+  top: -20px;
+}
+
+.input-container input {
+  width: 200px;
+  height: 15px;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 600;
+}
+
+select {
+  width: 208px;
+  height: 20px;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 600;
+  padding: 20px;
+}
+
+.signup-button {
+  width: 70px;
+  height: 20px;
+  background-color: rgba(255,0,0,.2);
+  border: 2px solid red;
+  cursor: pointer;
+  position: relative;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 100;
+  text-align: center;
+  line-height: 0.1;
+  font-size: 10px;
+  text-transform: uppercase;
+}
+
+.input-container button:hover {
+  width: 70px;
+  height: 20px;
+  background-color: red;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.font-span {
+  font-family: 'Faster One', cursive;
+  font-size: 60px;
+  color: red;
+  text-align: center;
+}
+
+.logo-login a {
+  text-decoration: none;
+}

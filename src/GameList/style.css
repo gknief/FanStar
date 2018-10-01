@@ -20,4 +20,14 @@
   width: 350px;
   padding: 10px;
   margin-left: 400px;
+  background-color: white;
+}
+
+.add-game-button {
+  width: 50px;
+}
+
+.add-game-button:hover {
+  background-color: red;
+  cursor: pointer;
 }

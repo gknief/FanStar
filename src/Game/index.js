@@ -30,7 +30,7 @@ class Game extends Component {
         <div>Location: {this.props.location}</div>
         <div>Date: {this.props.date}</div>
         <div>
-          <button onClick={this.state.gameClick}></button>
+          <button className = "add-game-button" onClick={this.state.gameClick}>Add Game</button>
         </div>
       </div>
     );

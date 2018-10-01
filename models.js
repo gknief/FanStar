@@ -37,6 +37,8 @@ User.belongsToMany(Game, { through: UserGame });
 Game.belongsToMany(User, { through: UserGame });
 Team.belongsToMany(Game, { through: GameTeam });
 Game.belongsToMany(Team, { through: GameTeam });
+Team.hasMany(User);
+User.belongsTo(Team);
 
 // User.hasOne(Team);
 // Team.belongsToMany(User);

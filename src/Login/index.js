@@ -19,7 +19,8 @@ class Login extends Component {
     })
   }
 
-  login = async () => {
+  login = async e => {
+    e.preventDefault();
     const requestBody = JSON.stringify({
       email: this.state.email,
       password: this.state.password,
@@ -60,7 +61,7 @@ class Login extends Component {
     return (
       <div className="login-container">
         <div className="Login">
-          <form onSubmit={this.onSubmit}>
+          <form onSubmit={this.login}>
             <div className="logo-login">
               <Link to='/'>
 
@@ -71,7 +72,7 @@ class Login extends Component {
             <div className="input-container">
               <input type="text" value={this.state.email} placeholder="Email" onChange={this.onInputChnge} name="email" /><br></br><br></br><br></br>
               <input type="password" value={this.state.password} placeholder="Password" onChange={this.onInputChnge} name="password" /><br></br><br></br>
-              <button type="button" onClick={this.login}>Log In</button>
+              <input type="submit" onClick={this.login} value="Log In" />
               <div>{this.state.errorMessage && <p className="login-error-message">{this.state.errorMessage}</p>}</div>
             </div>
           </form>

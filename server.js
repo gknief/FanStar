@@ -615,6 +615,8 @@ app.get('/api/favoriteTeam', async (request, response) => {
   };
   const game = await Game.findAll({ sequelizeOptions });
   response.json(game);
+  console.log('hello');
+  
 });
 
 app.get('/api/games', async (request, response) => {

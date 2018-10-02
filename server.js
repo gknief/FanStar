@@ -160,8 +160,6 @@ app.get('/api/favoriteTeam', async (request, response) => {
   const token = request.headers['jwt-token'];
   const verify = await jwt.verify(token, jwtSecret);
   const favoriteTeam = verify.favoriteTeam;
-
-  console.log(verify);
   const sequelizeOptions = {
     where: {
       $or: [
@@ -185,8 +183,6 @@ app.get('/api/favoriteTeam', async (request, response) => {
   };
   const game = await Game.findAll({ sequelizeOptions });
   response.json(game);
-  console.log('hello');
-
 });
 
 app.get('/api/games', async (request, response) => {

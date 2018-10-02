@@ -21,11 +21,7 @@ class GameList extends Component {
 
   fetchGames = async () => {
     const response = await fetch(`/api/${this.state.user.favoriteTeam}/games`)
-    console.log(this.state.user.favoriteTeam);
-
     const gameList = await response.json();
-    console.log(gameList);
-
     this.setState({
       gameList: gameList,
     })

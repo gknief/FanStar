@@ -19,6 +19,7 @@ body {
     align-items: center;
     flex-flow: column;
     align-content: flex-start;
+    overflow-y: scroll;
 }
 
 .logo {

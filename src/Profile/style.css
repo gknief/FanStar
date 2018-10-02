@@ -10,6 +10,7 @@
     flex-flow: column;
     align-content: flex-start;
     text-align: center;
+    overflow-y: scroll;
 }
 
 .profile-container span {
@@ -78,4 +79,14 @@
     color: black;
     margin-top: 10px;
     font-size: 25px;
+}
+
+@media only screen and (max-width: 600px) {
+    .profile-star1 {
+        display: none;
+    }
+    
+    .profile-star2 {
+        display: none;
+    }
 }

@@ -55,14 +55,22 @@ class Profile extends Component {
     return (
       <div className="profile-container">
         <Link to="/"><button className="logout" onClick={this.logout}>Log Out</button></Link>
-        <div>Name: {this.state.user.firstName} {this.state.user.lastName}</div>
-        <div>Email: {this.state.user.email}</div>
-        <div>Fan Score: {Math.floor(this.state.gameList.length / 1271 * 5000)}</div>
-        <div>Favorite team: {this.state.user.favoriteTeam}</div>
-        <div><Link to="./gamelist"><button className="add-game-button">Add new game:</button></Link> </div>
-        <div>Number of games attended: {this.state.gameList.length}</div>
-        <div>Games I've attended:</div>
-        <GamesAttended />
+        <Link to='/'>
+                <img className="profile-star1" src="../images/fan_star_logo1.png" />
+        </Link>
+        <Link to='/'>
+                <img className="profile-star2" src="../images/fan_star_logo1.png" />
+        </Link>
+        <div className="user-information">
+        <div className="user-name">Name: <span>{this.state.user.firstName} {this.state.user.lastName}</span></div>
+        <div className="user-email">Email: <span>{this.state.user.email}</span></div>
+        <div className="favorite-team">Favorite team: <span>{this.state.user.favoriteTeam}</span></div>
+        <div className="number-games">Number of games attended: <span>{this.state.gameList.length}</span></div>
+        <div className="fan-score">Fan Score: <span>{Math.floor(this.state.gameList.length / 1271 * 5000)}</span></div>
+        <div><Link to="./gamelist"><button className="add-game-profile">Add new game</button></Link> </div>
+        </div>
+        <div className="i-attended">I've attended:</div>
+        <GamesAttended  />
       </div>
     );
   }

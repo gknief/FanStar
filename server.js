@@ -19,6 +19,19 @@ app.get('/api/users', async (request, response) => {
   response.json(users);
 })
 
+app.put('/api/users/:id', async (request, response) => {
+  console.log(request.params.id);
+  const userId = request.params.id;
+  const user = await User.findOne({
+    where: {
+      id: userId
+    }
+  })
+  user.favoriteTeam = request.body.favoriteTeam
+  await user.save();
+  response.sendStatus(200);
+});
+
 app.post('/api/register', async (request, response) => {
   const { email, password, firstName, lastName, favoriteTeam } = request.body;
   if (!email || !password) {
@@ -55,6 +68,38 @@ app.post('/api/register', async (request, response) => {
   response.json({
     token: token
   });
+});
+
+app.post('/api/login', async (request, response) => {
+  const { email, password } = request.body;
+  if (!email || !password) {
+    response.status(400).json({
+      message: "Please Provide an Email and Password"
+    });
+    return;
+  }
+  const existingUser = await User.findOne({
+    where: {
+      email: email
+    }
+  });
+  if (existingUser === null) {
+    response.status(401).json({
+      message: "Invalid username or password."
+    });
+    return;
+  }
+  const isPasswordCorrect = await bcrypt.compare(password, existingUser.passwordDigest);
+  if (isPasswordCorrect) {
+    const token = jwt.sign({ userId: existingUser.id }, jwtSecret);
+    response.json({
+      token: token
+    });
+  } else {
+    response.status(401).json({
+      message: 'Invalid Username or Password'
+    })
+  }
 });
 
 app.get('/api/:favoriteTeam/games', async (request, response) => {
@@ -106,37 +151,7 @@ app.get('/api/teams', async (request, response) => {
   response.json(teams)
 })
 
-app.post('/api/login', async (request, response) => {
-  const { email, password } = request.body;
-  if (!email || !password) {
-    response.status(400).json({
-      message: "Please Provide an Email and Password"
-    });
-    return;
-  }
-  const existingUser = await User.findOne({
-    where: {
-      email: email
-    }
-  });
-  if (existingUser === null) {
-    response.status(401).json({
-      message: "Invalid username or password."
-    });
-    return;
-  }
-  const isPasswordCorrect = await bcrypt.compare(password, existingUser.passwordDigest);
-  if (isPasswordCorrect) {
-    const token = jwt.sign({ userId: existingUser.id }, jwtSecret);
-    response.json({
-      token: token
-    });
-  } else {
-    response.status(401).json({
-      message: 'Invalid Username or Password'
-    })
-  }
-});
+
 
 app.get('/api/current-user', async (request, response) => {
   const token = request.headers['jwt-token'];

@@ -20,7 +20,6 @@ app.get('/api/users', async (request, response) => {
 })
 
 app.put('/api/users/:id', async (request, response) => {
-  console.log(request.params.id);
   const userId = request.params.id;
   const user = await User.findOne({
     where: {
@@ -30,6 +29,16 @@ app.put('/api/users/:id', async (request, response) => {
   user.favoriteTeam = request.body.favoriteTeam
   await user.save();
   response.sendStatus(200);
+});
+
+app.delete('/api/users/:id', async (request, response) => {
+  const userId = request.params.id;
+  const user = await User.findOne({
+    where: {
+      id: userId
+    }
+  });
+  await user.destroy();
 });
 
 app.post('/api/register', async (request, response) => {

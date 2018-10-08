@@ -72,6 +72,16 @@ class Profile extends Component {
     })
   }
 
+  delete = async () => {
+    const response = await fetch(`/api/users/${this.state.user.userId}`, {
+      method: 'DELETE',
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    });
+    localStorage.clear();
+  }
+
   onInputChange = e => {
     this.setState({
       [e.target.name]: e.target.value
@@ -137,7 +147,8 @@ class Profile extends Component {
     return (
       <div className="profile-container">
         <Link to="/"><button className="logout" onClick={this.logout}>Log Out</button></Link>
-        <button className="edit" onClick={this.edit}>Edit</button>
+        <button className="edit" onClick={this.edit}>Edit Team</button>
+        <Link to="/"><button className="delete" onClick={this.delete}>Delete Profile</button></Link>
         <Link to='/'>
           <img className="profile-star1" src="../images/fan_star_logo1.png" />
         </Link>

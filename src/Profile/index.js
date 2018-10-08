@@ -60,7 +60,10 @@ class Profile extends Component {
         'Content-Type': 'application/json'
       }
     });
-    console.log(this.state.user.userId);
+    this.setState({
+      editProfile: false
+    });
+    window.location.reload();
   }
 
   onInputChange = e => {
@@ -127,7 +130,6 @@ class Profile extends Component {
           <button type="button" onClick={this.save}>Save</button>
         </form>
       </div>
-
     );
   }
 

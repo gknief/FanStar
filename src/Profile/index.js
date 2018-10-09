@@ -94,8 +94,9 @@ class Profile extends Component {
 
   renderForm() {
     return (
-      <div className="Profile">
+      <div className="profile-container">
         <form onSubmit={this.save}>
+        <h2>Change Favorite Team Below:</h2>
           <select name="favoriteTeam" onChange={this.onInputChange}>
             <optgroup label="Atlantic Division">
               <option>Boston Bruins</option>
@@ -147,7 +148,7 @@ class Profile extends Component {
     return (
       <div className="profile-container">
         <Link to="/"><button className="logout" onClick={this.logout}>Log Out</button></Link>
-        <button className="edit" onClick={this.edit}>Edit Team</button>
+        <button className="edit" onClick={this.edit}>Edit Favorite Team</button>
         <Link to="/"><button className="delete" onClick={this.delete}>Delete Profile</button></Link>
         <Link to='/'>
           <img className="profile-star1" src="../images/fan_star_logo1.png" />
